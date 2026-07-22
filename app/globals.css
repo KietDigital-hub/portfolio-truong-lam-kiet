@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  /* Màu lấy chính xác từ computed styles của heynesh.com (trang tham khảo) */
+  --color-oat: #d5cfbe;
+  --color-oat-card: #ebeada;
+  --color-oat-card-2: #dfdece;
+  --color-ink: #111111;
+  --color-ink-soft: #555652;
+  --color-dark: #0a0a0a;
+  --color-dark-2: #181818;
+  --color-cream: #f5f5f0;
+  --color-lime: #ffff23;
+  --color-lime-soft: #ffffa8;
+}
+
+@theme inline {
+  --color-oat: var(--color-oat);
+  --color-oat-card: var(--color-oat-card);
+  --color-oat-card-2: var(--color-oat-card-2);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-dark: var(--color-dark);
+  --color-dark-2: var(--color-dark-2);
+  --color-cream: var(--color-cream);
+  --color-lime: var(--color-lime);
+  --color-lime-soft: var(--color-lime-soft);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-bricolage);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-oat);
+  color: var(--color-ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+
+/* Heading / display type dùng Bricolage Grotesque thay vì font body */
+h1,
+h2,
+h3,
+.font-black {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
