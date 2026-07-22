@@ -106,6 +106,16 @@ Nguyên tắc: 2 nền + 1 accent, dùng accent có chủ đích (CTA, số li�
 - **Divider**: SVG đường cong vẽ tay, tự "vẽ" (`pathLength` animate) khi scroll tới, đặt giữa Hero và About.
 - **Testimonial**: KHÔNG có — không có quote thật nên bỏ hẳn, không bịa.
 
+### Layer animation bổ sung (thêm ngày 22/7/2026, thuần additive — không đụng nội dung cũ)
+
+- **ScrollProgress** (`ui/ScrollProgress.tsx`): thanh vàng mảnh ở đỉnh trang chạy theo % cuộn (`useScroll` + `useSpring`). Mount global trong `layout.tsx`.
+- **CursorGlow** (`ui/CursorGlow.tsx`): quầng sáng vàng bám con trỏ, `mix-blend-multiply`, `pointer-events-none`. CHỈ desktop — tự tắt khi `(hover: none)` / touch / `prefers-reduced-motion`.
+- **AuroraBackground** (`ui/AuroraBackground.tsx`): 3 quầng màu (lime + oat + lime-soft) trôi nhẹ vô tận, `fixed inset-0 -z-10`. Kỹ thuật: negative z-index paint TRÊN background của body nhưng DƯỚI content in-flow → hiện qua các section nền trong suốt (Hero/About/Skills/Achievements/Cta/Faq), bị che ở section nền tối (Projects/Footer). Không cần đổi bg body.
+- **Tilt3D** (`ui/Tilt3D.tsx`): wrapper nghiêng 3D theo con trỏ (perspective + rotateX/Y qua `useMotionValue`/`useSpring`) + vệt sáng `group-hover`. Đang bọc 6 thẻ trong Skills. `motion-reduce:!transform-none` để tôn trọng reduced-motion.
+- **Marquee** (`sections/Marquee.tsx`): dải chữ công cụ chạy vô tận (nền tối, chữ cream + dấu ✦ lime), đặt giữa Skills và Projects trong `page.tsx`. Nội dung là tool thật từ hồ sơ, không bịa. Tự dừng khi `useReducedMotion`.
+
+Nguyên tắc khi thêm animation kiểu này: luôn tôn trọng `prefers-reduced-motion`, tắt hiệu ứng phụ thuộc chuột trên thiết bị cảm ứng, và giữ `pointer-events-none` cho layer trang trí để không cản click.
+
 ## Bài học / lỗi đã gặp (đọc trước khi sửa design/animation)
 
 1. **Vietnamese glyph support KHÔNG mặc định có ở mọi font đẹp.** Từng đổi sang `Clash Display` (Fontshare) vì đẹp hơn Inter — font này KHÔNG có glyph cho `ư`/`ơ` (dấu móc), browser tự fallback sang font khác cho riêng 2 ký tự đó → chữ "TRƯƠNG" vỡ font, nhìn như 2 font trộn lẫn. **Luôn test render text tiếng Việt thật (có ư, ơ, các dấu tổ hợp) trước khi chốt đổi font**, dùng Playwright render 1 trang test nhỏ rồi zoom kiểm tra pixel, đừng tin bằng mắt thường ở size nhỏ. `Bricolage Grotesque`, `Be Vietnam Pro`, `Plus Jakarta Sans` đã test và AN TOÀN.

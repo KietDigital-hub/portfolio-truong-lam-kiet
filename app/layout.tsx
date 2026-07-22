@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { CursorGlow } from "@/components/ui/CursorGlow";
+import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import "./globals.css";
 
 const inter = Inter({
@@ -27,6 +30,9 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${inter.variable} ${bricolage.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-oat text-ink">
+        <AuroraBackground />
+        <ScrollProgress />
+        <CursorGlow />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

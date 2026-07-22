@@ -3,6 +3,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Chip } from "@/components/ui/Chip";
+import { Tilt3D } from "@/components/ui/Tilt3D";
 
 export function Skills() {
   return (
@@ -18,19 +19,21 @@ export function Skills() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((skill, i) => (
-            <Reveal key={skill.title} delay={(i % 3) * 0.08}>
-              <div className="flex h-full flex-col rounded-3xl border border-ink/10 bg-oat-card/50 p-7">
-                <IconBadge icon={skill.icon} />
-                <h3 className="mt-5 text-lg font-black">{skill.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
-                  {skill.description}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {skill.chips.map((chip) => (
-                    <Chip key={chip}>{chip}</Chip>
-                  ))}
+            <Reveal key={skill.title} delay={(i % 3) * 0.08} className="h-full">
+              <Tilt3D className="h-full rounded-3xl">
+                <div className="flex h-full flex-col rounded-3xl border border-ink/10 bg-oat-card/50 p-7">
+                  <IconBadge icon={skill.icon} />
+                  <h3 className="mt-5 text-lg font-black">{skill.title}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
+                    {skill.description}
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {skill.chips.map((chip) => (
+                      <Chip key={chip}>{chip}</Chip>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </Tilt3D>
             </Reveal>
           ))}
         </div>
