@@ -8,6 +8,18 @@ export function Achievements() {
   return (
     <section id="achievements" className="px-5 py-24 sm:px-8">
       <div className="mx-auto max-w-6xl">
+        <div className="relative isolate overflow-hidden rounded-[2.5rem] border-[3px] border-ink px-5 py-14 shadow-[0_30px_70px_-45px_rgba(0,0,0,0.6)] sm:px-10 sm:py-16">
+          <div aria-hidden className="absolute inset-0 -z-10">
+            <Image
+              src="/images/nen3.png"
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 1100px"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-oat/88" />
+          </div>
+
         <Reveal>
           <SectionHeading eyebrow="Thành tựu" title="Tự học, tự làm, tự đo lường kết quả." />
         </Reveal>
@@ -58,6 +70,7 @@ export function Achievements() {
               </div>
             </div>
           </Reveal>
+        </div>
         </div>
       </div>
     </section>
