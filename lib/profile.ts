@@ -11,10 +11,6 @@ export const profile = {
   school: "Trường Đại học Văn Lang",
   major: "Chuyên ngành Digital Marketing",
   schoolYears: "2023-2026",
-  mentor: {
-    name: "Thầy Hà Đăng Khôi",
-    role: "Giảng viên chuyên ngành Digital Marketing, Đại học Văn Lang",
-  },
   tagline: "Từ người học việc đến Digital Marketer triển khai được đầu-cuối.",
   heroDescription:
     "Mình theo đuổi không chỉ chạy được quảng cáo, mà hiểu vì sao một chiến dịch hiệu quả - và lặp lại được điều đó.",

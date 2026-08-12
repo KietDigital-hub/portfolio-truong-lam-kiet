@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { GraduationCap, Users, Briefcase, Flag, UserRound, X } from "lucide-react";
+import { GraduationCap, Users, Briefcase, Flag, X } from "lucide-react";
 import { timeline, profile, interests } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -14,7 +15,7 @@ function Connector({ flip }: { flip: boolean }) {
     <svg
       aria-hidden
       viewBox="0 0 120 90"
-      className={`pointer-events-none absolute -top-[72px] h-[72px] w-[120px] text-ink/25 ${
+      className={`pointer-events-none absolute -top-[72px] h-[72px] w-[120px] text-cream/40 ${
         flip ? "right-0 -scale-x-100" : "left-0"
       }`}
       fill="none"
@@ -38,8 +39,23 @@ export function About() {
   return (
     <section id="about" className="px-5 py-24 sm:px-8">
       <div className="mx-auto max-w-6xl">
+        {/* Panel riêng của mục Mục tiêu: ảnh nen.png làm nền, có khung màu riêng */}
+        <div className="relative isolate overflow-hidden rounded-[2.5rem] border-[3px] border-lime bg-dark px-5 py-16 shadow-[0_30px_70px_-40px_rgba(0,0,0,0.6)] sm:px-10 sm:py-20">
+          {/* Ảnh nền chỉ trải ở phần đầu panel rồi tan dần vào nền tối, tránh bị phóng to méo */}
+          <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[420px] sm:h-[560px]">
+            <Image
+              src="/images/nen.png"
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 1100px"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-dark/55 via-dark/70 to-dark" />
+          </div>
+
         <Reveal>
           <SectionHeading
+            dark
             eyebrow="Mục tiêu nghề nghiệp"
             title={
               <>
@@ -66,7 +82,7 @@ export function About() {
                   {i > 0 && <Connector flip={alignRight} />}
                   <button
                     onClick={() => setOpenIndex(i)}
-                    className="w-full rounded-3xl border border-ink/10 bg-oat-card/60 p-7 text-left shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:rotate-0"
+                    className="w-full rounded-3xl border border-cream/15 bg-oat-card/92 p-7 text-left shadow-xl transition-transform duration-300 hover:-translate-y-1 hover:rotate-0"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <span className="text-3xl font-black text-lime [-webkit-text-stroke:1px_var(--color-ink)]">
@@ -88,9 +104,9 @@ export function About() {
           })}
         </div>
 
-        <div className="mt-20 grid gap-6 md:grid-cols-2">
+        <div className="mt-20 grid gap-6">
           <Reveal delay={0.05}>
-            <div className="flex h-full items-start gap-4 rounded-3xl border border-ink/10 bg-oat-card/50 p-8">
+            <div className="flex h-full items-start gap-4 rounded-3xl border border-cream/15 bg-oat-card/90 p-8">
               <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-lime text-ink">
                 <GraduationCap size={22} strokeWidth={2.4} />
               </span>
@@ -102,32 +118,19 @@ export function About() {
               </div>
             </div>
           </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="flex h-full items-start gap-4 rounded-3xl border border-ink/10 bg-oat-card/50 p-8">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-lime text-ink">
-                <UserRound size={22} strokeWidth={2.4} />
-              </span>
-              <div>
-                <div className="font-black">Người cố vấn</div>
-                <p className="mt-1 text-sm text-ink-soft">
-                  {profile.mentor.name} - {profile.mentor.role}
-                </p>
-              </div>
-            </div>
-          </Reveal>
         </div>
 
         <Reveal delay={0.1} className="mt-6">
-          <div className="flex flex-wrap items-center gap-3 rounded-3xl border border-ink/10 bg-oat-card/30 px-8 py-5 text-sm text-ink-soft">
-            <span className="font-black uppercase tracking-[0.15em] text-ink">Ngoài công việc</span>
+          <div className="flex flex-wrap items-center gap-3 rounded-3xl border border-cream/20 bg-dark-2/70 px-8 py-5 text-sm text-cream/70 backdrop-blur-sm">
+            <span className="font-black uppercase tracking-[0.15em] text-cream">Ngoài công việc</span>
             {interests.map((interest) => (
-              <span key={interest} className="rounded-full bg-oat-card-2/60 px-3 py-1">
+              <span key={interest} className="rounded-full bg-cream/10 px-3 py-1">
                 {interest}
               </span>
             ))}
           </div>
         </Reveal>
+        </div>
       </div>
 
       <AnimatePresence>

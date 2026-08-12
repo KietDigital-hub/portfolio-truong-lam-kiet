@@ -100,7 +100,7 @@ Nguyên tắc: 2 nền + 1 accent, dùng accent có chủ đích (CTA, số li�
 
 - **Hero**: chữ "KIET" (không dấu, xem "Bài học") khổng lồ màu lime làm nền, ảnh chân dung cutout đè giữa, headline 3 dòng đè lên phần dưới ảnh, 2 badge số liệu + 1 panel tag kỹ năng nổi kiểu glass (chỉ desktop, `hidden lg:block`), CTA + mô tả hàng dưới, metric strip 4 cột cuối section. SplitText animate headline khi mount.
 - **Sidebar** (thay navbar sau khi qua Hero): logo/mô tả ngắn, 2 stat nhỏ, nav list scroll-spy (active = nền lime), email, nút "Liên hệ ngay". Chỉ desktop (`hidden lg:flex`).
-- **About**: timeline 4 mốc thật (2023 nhập học → 2025 làm Leader 2 dự án → 2026 thực tập TinHolding → 2026 tốt nghiệp) xếp so le trái/phải, nối bằng SVG connector, click "Xem thêm" mở modal tối chi tiết (AnimatePresence).
+- **About (Mục tiêu)**: toàn bộ nội dung nằm trong 1 panel riêng - nền là ảnh `public/images/nen.png` trải ở phần đầu rồi tan dần vào nền đen, viền `border-[3px] border-lime`. Đây là section DUY NHẤT dùng ảnh nền này; phần còn lại của site giữ nền oat sáng. Card timeline/học vấn để nền sáng đục (`bg-oat-card/92`) cho nổi trên nền tối. Bên trong: timeline 4 mốc thật (2023 nhập học → 2025 làm Leader 2 dự án → 2026 thực tập TinHolding → 2026 tốt nghiệp) xếp so le trái/phải, nối bằng SVG connector, click "Xem thêm" mở modal tối chi tiết (AnimatePresence).
 - **Projects**: horizontal pinned-scroll (sticky container + `useScroll`/`useTransform` translateX theo `scrollYProgress`) — KHÔNG phải grid tĩnh. Slide gồm: intro → thực tập TinHolding → 2 dự án Leader, mỗi card có ảnh Unsplash trang trí + progress bar dưới cùng.
 - **FAQ**: lưới 2 cột, chữ cái "K" khổng lồ mờ làm nền trang trí.
 - **Divider**: SVG đường cong vẽ tay, tự "vẽ" (`pathLength` animate) khi scroll tới, đặt giữa Hero và About.
@@ -144,7 +144,7 @@ Toàn bộ nội dung dưới đây đã đưa vào `lib/profile.ts`. Đây là 
 
 ### Học vấn
 - Trường Đại học Văn Lang — ngành Marketing, chuyên ngành Digital Marketing (2023-2026)
-- Người cố vấn: Thầy Hà Đăng Khôi — Giảng viên chuyên ngành Digital Marketing, ĐH Văn Lang
+- (Người cố vấn: Kiệt yêu cầu KHÔNG đưa thông tin này lên site - đã gỡ khỏi `lib/profile.ts` và section About, đừng thêm lại)
 
 ### Kinh nghiệm thực tập (đang diễn ra)
 - **Thực tập sinh SEO (TTS SEO)** tại **TinHolding** (tinholding.com), 21/5/2026-21/8/2026: thiết kế website công ty, quản trị WordPress, đi backlink (SEO offpage), viết content chuẩn SEO.
