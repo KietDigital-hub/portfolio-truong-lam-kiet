@@ -101,7 +101,9 @@ Nguyên tắc: 2 nền + 1 accent, dùng accent có chủ đích (CTA, số li�
 - **Hero**: chữ "KIET" (không dấu, xem "Bài học") khổng lồ màu lime làm nền, ảnh chân dung cutout đè giữa, headline 3 dòng đè lên phần dưới ảnh, 2 badge số liệu + 1 panel tag kỹ năng nổi kiểu glass (chỉ desktop, `hidden lg:block`), CTA + mô tả hàng dưới, metric strip 4 cột cuối section. SplitText animate headline khi mount.
 - **Sidebar** (thay navbar sau khi qua Hero): logo/mô tả ngắn, 2 stat nhỏ, nav list scroll-spy (active = nền lime), email, nút "Liên hệ ngay". Chỉ desktop (`hidden lg:flex`).
 - **About (Mục tiêu)**: toàn bộ nội dung nằm trong 1 panel riêng - nền là ảnh `public/images/nen.png` trải ở phần đầu rồi tan dần vào nền đen, viền `border-[3px] border-lime`. Đây là section DUY NHẤT dùng ảnh nền này; phần còn lại của site giữ nền oat sáng. Card timeline/học vấn để nền sáng đục (`bg-oat-card/92`) cho nổi trên nền tối. Bên trong: timeline 4 mốc thật (2023 nhập học → 2025 làm Leader 2 dự án → 2026 thực tập TinHolding → 2026 tốt nghiệp) xếp so le trái/phải, nối bằng SVG connector, click "Xem thêm" mở modal tối chi tiết (AnimatePresence).
-- **Projects**: horizontal pinned-scroll (sticky container + `useScroll`/`useTransform` translateX theo `scrollYProgress`) — KHÔNG phải grid tĩnh. Slide gồm: intro → thực tập TinHolding → 2 dự án Leader, mỗi card có ảnh Unsplash trang trí + progress bar dưới cùng.
+- **Projects**: ĐÃ XÓA (12/8/2026, yêu cầu của Kiệt). Bỏ luôn 2 card dự án học phần và mảng `projects` trong `lib/profile.ts`. Phần dự án duy nhất còn lại trên site là **Dự án AI** (video YouTube).
+- **Experience** (`sections/Experience.tsx`, `#experience`): thay chỗ của Projects - card trái là vị trí thực tập TinHolding + KPI, card phải là 6 đầu việc + khối "Điều rút ra". Nav/nút Hero đã trỏ về `#experience`.
+- **Skills**: nằm trong panel riêng nền `public/images/nen2.png` + viền lime (giống panel Mục tiêu). Bên trong có lưới **10 công cụ** (`tools` trong `lib/profile.ts`): logo được CẮT TỪ CHÍNH ảnh nen2.png bằng script PIL vào `public/images/tools/*.png` (256x256), ghép cạnh tên + mô tả. Muốn thêm/sửa công cụ thì cắt thêm ảnh theo cùng cách rồi thêm vào mảng `tools`.
 - **FAQ**: lưới 2 cột, chữ cái "K" khổng lồ mờ làm nền trang trí.
 - **Divider**: SVG đường cong vẽ tay, tự "vẽ" (`pathLength` animate) khi scroll tới, đặt giữa Hero và About.
 - **Testimonial**: KHÔNG có — không có quote thật nên bỏ hẳn, không bịa.
@@ -158,7 +160,7 @@ Toàn bộ nội dung dưới đây đã đưa vào `lib/profile.ts`. Đây là 
 ### Kỹ năng & công cụ
 Digital Advertising (Facebook/Google/TikTok Ads cơ bản) · SEO (content chuẩn SEO, backlink, WordPress) · AI Tools (ChatGPT, Claude, Midjourney) · Website Management (WordPress) · Social Media Management (Fanpage, Content Calendar) · Content & Design (Canva, CapCut).
 
-### Dự án & Hoạt động học tập (vai trò Leader cả 2)
+### Dự án & Hoạt động học tập (KHÔNG còn hiển thị trên site - Kiệt yêu cầu gỡ, giữ lại đây để tham khảo)
 1. **Đề án Marketing Kỹ thuật số** (10/11/2025-30/3/2026): lập kế hoạch, điều phối nhóm, Landing Page, quản lý Multi-channel Ads (Facebook/Google/TikTok), content đa kênh, Content Calendar.
 2. **Phát triển Website Căn bản** (10/11/2025-30/4/2026): quản trị hosting/domain, WordPress, UI/UX e-commerce, giỏ hàng/thanh toán, chatbot tự động, SEO content.
 

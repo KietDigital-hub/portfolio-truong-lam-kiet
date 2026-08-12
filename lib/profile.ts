@@ -101,7 +101,7 @@ export const skills = [
     title: "AI Tools",
     description:
       "Ứng dụng linh hoạt các công cụ AI để tối ưu hóa hiệu suất viết nội dung và hỗ trợ công việc marketing.",
-    chips: ["ChatGPT", "Claude", "Midjourney"],
+    chips: ["ChatGPT", "Claude", "Claude Code", "n8n", "Seedance"],
   },
   {
     icon: "globe",
@@ -145,39 +145,68 @@ export const experience = {
   ],
 };
 
-export const projects = [
+export const tools = [
   {
-    index: "01",
-    title: "Đề án Marketing Kỹ thuật số",
-    role: "Leader",
-    period: "10/11/2025-30/3/2026",
-    tags: ["Multi-channel Ads", "Landing Page", "Content"],
-    description:
-      "Lập kế hoạch tổng thể, điều phối nhóm, xây dựng Landing Page phục vụ quảng cáo chuyển đổi và trực tiếp vận hành ngân sách trên Facebook Ads, Google Ads, TikTok Ads.",
-    points: [
-      "Lập kế hoạch tổng thể, phân chia công việc, theo dõi tiến độ nhóm",
-      "Thiết kế & tối ưu Landing Page/Website phục vụ quảng cáo chuyển đổi (UX/UI)",
-      "Thiết lập, vận hành, tối ưu ngân sách trên Facebook Ads, Google Ads, TikTok Ads",
-      "Viết content đa kênh (Website, Fanpage), xây dựng Content Calendar",
-    ],
+    name: "ChatGPT",
+    image: "/images/tools/chatgpt.png",
+    group: "AI",
+    text: "Trợ lý AI của OpenAI - lên ý tưởng, viết và tối ưu nội dung marketing.",
   },
   {
-    index: "02",
-    title: "Phát triển Website Căn bản",
-    role: "Leader",
-    period: "10/11/2025-30/4/2026",
-    tags: ["WordPress", "E-commerce", "SEO"],
-    description:
-      "Quản trị hosting, tên miền, dựng website WordPress theo phong cách e-commerce hiện đại - tích hợp giỏ hàng, thanh toán và chatbot tự động.",
-    points: [
-      "Quản trị Hosting & tên miền, cài đặt/cấu hình WordPress",
-      "Thiết kế UI/UX trang chủ, danh mục, chi tiết sản phẩm theo phong cách e-commerce",
-      "Tích hợp giỏ hàng, thanh toán, quản lý đơn hàng",
-      "Tích hợp Chatbot tự động hỗ trợ khách hàng 24/7",
-      "Xây dựng bài viết chuẩn SEO, kiểm soát lỗi kỹ thuật",
-    ],
+    name: "Claude",
+    image: "/images/tools/claude.png",
+    group: "AI",
+    text: "Trợ lý AI của Anthropic - viết bài dài, phân tích và xử lý tài liệu.",
   },
-] as const;
+  {
+    name: "Claude Code",
+    image: "/images/tools/claude-code.png",
+    group: "AI",
+    text: "Công cụ lập trình bằng AI chạy trong terminal - dựng và chỉnh sửa website.",
+  },
+  {
+    name: "OpenClaw",
+    image: "/images/tools/openclaw.png",
+    group: "AI",
+    text: "Trợ lý AI mã nguồn mở, dùng để tự động hóa các tác vụ lặp lại hằng ngày.",
+  },
+  {
+    name: "n8n",
+    image: "/images/tools/n8n.png",
+    group: "Tự động hóa",
+    text: "Nền tảng tự động hóa workflow dạng kéo-thả, nối các ứng dụng và AI với nhau.",
+  },
+  {
+    name: "Magnific",
+    image: "/images/tools/magnific.png",
+    group: "Hình ảnh",
+    text: "AI phóng to và làm nét ảnh, giữ chi tiết cho ảnh dùng trong bài viết.",
+  },
+  {
+    name: "Seedance 2.0",
+    image: "/images/tools/seedance.png",
+    group: "Video AI",
+    text: "Mô hình AI tạo video từ ảnh và mô tả - dùng cho nội dung short-form.",
+  },
+  {
+    name: "CapCut",
+    image: "/images/tools/capcut.png",
+    group: "Video",
+    text: "Dựng, cắt nhịp và xuất video short-form cho TikTok/Reels.",
+  },
+  {
+    name: "Facebook Ads",
+    image: "/images/tools/fb-ads.png",
+    group: "Quảng cáo",
+    text: "Thiết lập chiến dịch, nhắm đối tượng và tối ưu ngân sách trên Meta.",
+  },
+  {
+    name: "Google Ads",
+    image: "/images/tools/gg-ads.png",
+    group: "Quảng cáo",
+    text: "Chạy chiến dịch Search/Display và theo dõi hiệu quả từng nhóm quảng cáo.",
+  },
+];
 
 export const aiProject = {
   eyebrow: "Dự án AI",
@@ -240,7 +269,7 @@ export const navLinks = [
   { href: "#home", label: "Trang chủ" },
   { href: "#about", label: "Mục tiêu" },
   { href: "#skills", label: "Kỹ năng" },
-  { href: "#projects", label: "Dự án" },
+  { href: "#experience", label: "Kinh nghiệm" },
   { href: "#ai-project", label: "Dự án AI" },
   { href: "#faq", label: "FAQ" },
 ];

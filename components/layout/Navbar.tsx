@@ -11,7 +11,7 @@ const leftLinks = [
 ];
 
 const rightLinks = [
-  { href: "#projects", label: "Dự án" },
+  { href: "#experience", label: "Kinh nghiệm" },
   { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Liên hệ" },
 ];

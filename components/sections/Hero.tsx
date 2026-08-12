@@ -150,8 +150,8 @@ export function Hero() {
             <Button href="#contact" variant="primary">
               Liên hệ ngay
             </Button>
-            <Button href="#projects" variant="primary">
-              Xem dự án
+            <Button href="#experience" variant="primary">
+              Xem kinh nghiệm
             </Button>
           </div>
         </Reveal>
