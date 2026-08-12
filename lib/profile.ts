@@ -145,39 +145,42 @@ export const experience = {
   ],
 };
 
-export const projects = [
+export const experienceGroups = [
   {
     index: "01",
-    title: "Đề án Marketing Kỹ thuật số",
-    role: "Leader",
-    period: "10/11/2025-30/3/2026",
-    tags: ["Multi-channel Ads", "Landing Page", "Content"],
-    description:
-      "Lập kế hoạch tổng thể, điều phối nhóm, xây dựng Landing Page phục vụ quảng cáo chuyển đổi và trực tiếp vận hành ngân sách trên Facebook Ads, Google Ads, TikTok Ads.",
+    title: "Website & giao diện",
+    image: "/images/deco-design.jpg",
+    tags: ["WordPress", "Elementor", "UI/UX"],
     points: [
-      "Lập kế hoạch tổng thể, phân chia công việc, theo dõi tiến độ nhóm",
-      "Thiết kế & tối ưu Landing Page/Website phục vụ quảng cáo chuyển đổi (UX/UI)",
-      "Thiết lập, vận hành, tối ưu ngân sách trên Facebook Ads, Google Ads, TikTok Ads",
-      "Viết content đa kênh (Website, Fanpage), xây dựng Content Calendar",
+      "Thiết kế lại giao diện website dạng blog: trang chủ, trang giới thiệu, trang bài viết đơn",
+      "Xử lý lỗi hiển thị của sidebar/trang bài viết và kiểm tra kỹ bản mobile",
     ],
   },
   {
     index: "02",
-    title: "Phát triển Website Căn bản",
-    role: "Leader",
-    period: "10/11/2025-30/4/2026",
-    tags: ["WordPress", "E-commerce", "SEO"],
-    description:
-      "Quản trị hosting, tên miền, dựng website WordPress theo phong cách e-commerce hiện đại - tích hợp giỏ hàng, thanh toán và chatbot tự động.",
+    title: "Nội dung chuẩn SEO",
+    image: "/images/deco-content.jpg",
+    tags: ["Content SEO", "Research", "Outline"],
     points: [
-      "Quản trị Hosting & tên miền, cài đặt/cấu hình WordPress",
-      "Thiết kế UI/UX trang chủ, danh mục, chi tiết sản phẩm theo phong cách e-commerce",
-      "Tích hợp giỏ hàng, thanh toán, quản lý đơn hàng",
-      "Tích hợp Chatbot tự động hỗ trợ khách hàng 24/7",
-      "Xây dựng bài viết chuẩn SEO, kiểm soát lỗi kỹ thuật",
+      "Viết và đăng bài chuẩn SEO 1.000-1.200 chữ/bài, kèm 3-7 hình tự thiết kế theo quy chuẩn thương hiệu",
+      "Research từ khóa và lên outline, phân loại nội dung theo cấp 0/1/2 với keyword chính - pillar - URL rõ ràng",
     ],
   },
-] as const;
+  {
+    index: "03",
+    title: "Tối ưu & Offpage",
+    image: "/images/deco-analytics.jpg",
+    tags: ["On-page", "Internal link", "Backlink"],
+    points: [
+      "Tối ưu bài viết cũ: bổ sung nội dung, chỉnh thẻ meta (title, description) và liên kết nội bộ",
+      "Rà soát và lập danh sách bài viết bị trùng từ khóa để xử lý, tránh cạnh tranh nội bộ",
+      "Đi backlink offpage: backlink profile chuẩn NAP, forum, blog 2.0 và Google Site cho hệ thống website vệ tinh",
+    ],
+  },
+];
+
+export const experienceTakeaway =
+  "Làm SEO không dừng ở viết bài - phải hiểu cấu trúc nội dung của cả website, biết bài nào nuôi bài nào, và đo được việc mình làm bằng chỉ tiêu cụ thể mỗi tuần.";
 
 export const tools = [
   {
@@ -304,7 +307,6 @@ export const navLinks = [
   { href: "#about", label: "Mục tiêu" },
   { href: "#skills", label: "Kỹ năng" },
   { href: "#experience", label: "Kinh nghiệm" },
-  { href: "#projects", label: "Dự án" },
   { href: "#ai-project", label: "Dự án AI" },
   { href: "#faq", label: "FAQ" },
 ];

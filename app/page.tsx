@@ -7,7 +7,6 @@ import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
 import { Marquee } from "@/components/sections/Marquee";
 import { Experience } from "@/components/sections/Experience";
-import { Projects } from "@/components/sections/Projects";
 import { AiProject } from "@/components/sections/AiProject";
 import { Achievements } from "@/components/sections/Achievements";
 import { Cta } from "@/components/sections/Cta";
@@ -26,10 +25,7 @@ export default function Home() {
           <Skills />
         </div>
         <Marquee />
-        <div className="lg:pl-80">
-          <Experience />
-        </div>
-        <Projects />
+        <Experience />
         <div className="lg:pl-80">
           <AiProject />
           <Achievements />

@@ -1,101 +1,231 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Briefcase, CheckCircle2, ExternalLink } from "lucide-react";
-import { experience } from "@/lib/profile";
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Briefcase, CheckCircle2, ArrowUpRight, Quote } from "lucide-react";
+import { experience, experienceGroups, experienceTakeaway } from "@/lib/profile";
+import { Chip } from "@/components/ui/Chip";
+
+type Slide =
+  | { kind: "intro" }
+  | { kind: "role" }
+  | { kind: "group"; data: (typeof experienceGroups)[number] }
+  | { kind: "takeaway" };
+
+const slides: Slide[] = [
+  { kind: "intro" },
+  { kind: "role" },
+  ...experienceGroups.map((g) => ({ kind: "group" as const, data: g })),
+  { kind: "takeaway" },
+];
 
 export function Experience() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const pinRef = useRef<HTMLDivElement>(null);
+  const [trackWidth, setTrackWidth] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  useEffect(() => {
+    const measure = () => {
+      setTrackWidth(trackRef.current?.scrollWidth ?? 0);
+      setViewportWidth(window.innerWidth);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: pinRef,
+    offset: ["start start", "end end"],
+  });
+
+  const maxTranslate = Math.max(trackWidth - viewportWidth + 64, 0);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -maxTranslate]);
+  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  const scrollHeight = Math.max(slides.length * 62, 220);
+
   return (
-    <section id="experience" className="px-5 py-24 sm:px-8">
-      <div className="mx-auto max-w-6xl">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Kinh nghiệm làm việc"
-            title="Ba tháng làm SEO thật, tại doanh nghiệp thật."
-          />
-        </Reveal>
+    <section id="experience" className="bg-dark text-cream">
+      <div ref={pinRef} style={{ height: `${scrollHeight}vh` }} className="relative">
+        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+          <div className="px-5 sm:px-8 lg:pl-80">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cream/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cream/60">
+              Kinh nghiệm làm việc
+            </span>
+          </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-          <Reveal delay={0.08}>
-            <div className="relative h-full overflow-hidden rounded-3xl border border-ink/10 bg-oat-card/60">
-              <div className="relative h-36 w-full">
-                <Image
-                  src="/images/deco-content.jpg"
-                  alt=""
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 460px"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-oat-card via-oat-card/40 to-transparent" />
-                <span className="absolute right-5 top-5 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink">
-                  Đang diễn ra
-                </span>
-              </div>
+          <motion.div
+            ref={trackRef}
+            style={{ x }}
+            className="mt-8 flex items-stretch gap-6 px-5 will-change-transform sm:px-8 lg:pl-80"
+          >
+            {slides.map((slide) => {
+              if (slide.kind === "intro") {
+                return (
+                  <div
+                    key="intro"
+                    className="flex w-[85vw] shrink-0 flex-col justify-center sm:w-[420px]"
+                  >
+                    <h3 className="text-4xl font-black leading-[1.1] sm:text-5xl">
+                      Ba tháng
+                      <br />
+                      làm SEO thật, tại
+                      <br />
+                      <span className="text-lime">doanh nghiệp thật.</span>
+                    </h3>
+                    <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/60">
+                      Không phải bài tập trên lớp - có deadline, có KPI tuần và có người duyệt.
+                      Kéo/cuộn để xem từng phần việc mình phụ trách.
+                    </p>
+                    <span className="mt-8 hidden items-center gap-2 text-xs font-bold uppercase tracking-widest text-cream/40 sm:flex">
+                      Cuộn để xem tiếp <ArrowUpRight size={14} className="rotate-90" />
+                    </span>
+                  </div>
+                );
+              }
 
-              <div className="p-8 pt-2">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-ink text-lime">
-                  <Briefcase size={22} strokeWidth={2.4} />
-                </span>
-                <h3 className="mt-5 text-2xl font-black leading-snug">{experience.role}</h3>
-                <a
-                  href={experience.companyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 inline-flex items-center gap-1.5 text-sm font-bold underline underline-offset-4"
-                >
-                  {experience.company}
-                  <ExternalLink size={14} strokeWidth={2.6} />
-                </a>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-ink-soft">
-                  {experience.period}
-                </p>
-
-                <div className="mt-7 border-t border-ink/10 pt-5">
-                  <span className="text-[10px] font-black uppercase tracking-[0.22em] text-ink-soft">
-                    KPI được giao
-                  </span>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {experience.kpis.map((kpi) => (
-                      <span
-                        key={kpi}
-                        className="rounded-full border border-ink/15 bg-lime/70 px-3 py-1 text-xs font-bold text-ink"
-                      >
-                        {kpi}
+              if (slide.kind === "role") {
+                return (
+                  <div
+                    key="role"
+                    className="flex w-[85vw] shrink-0 flex-col overflow-hidden rounded-3xl border border-cream/10 bg-dark-2 sm:w-[420px]"
+                  >
+                    <div className="relative h-40 w-full">
+                      <Image
+                        src="/images/deco-social.jpg"
+                        alt=""
+                        fill
+                        sizes="420px"
+                        className="object-cover opacity-90"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-dark-2 to-transparent" />
+                      <span className="absolute left-6 top-5 rounded-full bg-ink/70 px-3 py-1 text-xs font-black text-cream/70 backdrop-blur">
+                        00
                       </span>
-                    ))}
+                      <span className="absolute right-6 top-5 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink">
+                        Đang diễn ra
+                      </span>
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-8 pt-5">
+                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-lime text-ink">
+                        <Briefcase size={20} strokeWidth={2.4} />
+                      </span>
+                      <h3 className="mt-4 text-xl font-black leading-snug">{experience.role}</h3>
+                      <a
+                        href={experience.companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex w-fit items-center gap-1.5 text-sm font-bold text-lime hover:underline"
+                      >
+                        {experience.company}
+                        <ArrowUpRight size={14} strokeWidth={2.6} />
+                      </a>
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-cream/40">
+                        {experience.period}
+                      </p>
+
+                      <div className="mt-auto border-t border-cream/10 pt-5">
+                        <span className="text-[10px] font-black uppercase tracking-[0.22em] text-cream/40">
+                          KPI được giao
+                        </span>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {experience.kpis.map((kpi) => (
+                            <span
+                              key={kpi}
+                              className="rounded-full bg-lime/15 px-3 py-1 text-xs font-bold text-lime"
+                            >
+                              {kpi}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              if (slide.kind === "takeaway") {
+                return (
+                  <div
+                    key="takeaway"
+                    className="flex w-[85vw] shrink-0 flex-col justify-center rounded-3xl border border-lime/30 bg-dark-2 p-8 sm:w-[420px] sm:p-10"
+                  >
+                    <Quote size={32} className="text-lime" strokeWidth={2.4} />
+                    <p className="mt-5 text-lg font-black leading-snug text-cream sm:text-xl">
+                      {experienceTakeaway}
+                    </p>
+                    <span className="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-cream/40">
+                      Điều rút ra sau 3 tháng
+                    </span>
+                    <Link
+                      href="#contact"
+                      className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-lime px-5 py-3 text-sm font-bold text-ink transition-transform hover:-translate-y-0.5"
+                    >
+                      Liên hệ với mình
+                      <ArrowUpRight size={16} strokeWidth={2.6} />
+                    </Link>
+                  </div>
+                );
+              }
+
+              const group = slide.data;
+              return (
+                <div
+                  key={group.title}
+                  className="group relative flex w-[85vw] shrink-0 flex-col overflow-hidden rounded-3xl border border-cream/10 bg-dark-2 sm:w-[420px]"
+                >
+                  <div className="relative h-40 w-full">
+                    <Image
+                      src={group.image}
+                      alt=""
+                      fill
+                      sizes="420px"
+                      className="object-cover opacity-90"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-2 to-transparent" />
+                    <span className="absolute left-6 top-5 rounded-full bg-ink/70 px-3 py-1 text-xs font-black text-cream/70 backdrop-blur">
+                      {group.index}
+                    </span>
+                    <span className="absolute right-6 top-5 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink">
+                      TinHolding
+                    </span>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-8 pt-5">
+                    <h3 className="text-xl font-black leading-snug">{group.title}</h3>
+
+                    <ul className="mt-5 space-y-3">
+                      {group.points.map((point) => (
+                        <li key={point} className="flex gap-2.5 text-sm leading-relaxed text-cream/75">
+                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-lime" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-auto flex flex-wrap gap-2 pt-6">
+                      {group.tags.map((tag) => (
+                        <Chip key={tag} dark>
+                          {tag}
+                        </Chip>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </Reveal>
+              );
+            })}
+          </motion.div>
 
-          <Reveal delay={0.16}>
-            <div className="h-full rounded-3xl border border-ink/10 bg-oat-card/50 p-8 sm:p-10">
-              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-ink-soft">
-                Công việc phụ trách
-              </span>
-              <ul className="mt-5 space-y-4">
-                {experience.tasks.map((task) => (
-                  <li key={task} className="flex gap-3">
-                    <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-ink" />
-                    <span className="text-sm leading-relaxed text-ink-soft sm:text-[15px]">
-                      {task}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="mt-7 rounded-2xl border-l-4 border-lime bg-oat-card-2/60 px-5 py-4 text-sm leading-relaxed text-ink">
-                <span className="block text-[10px] font-black uppercase tracking-[0.22em] text-ink-soft">
-                  Điều rút ra
-                </span>
-                <span className="mt-1.5 block">
-                  Làm SEO không dừng ở viết bài - phải hiểu cấu trúc nội dung của cả website, biết
-                  bài nào nuôi bài nào, và đo được việc mình làm bằng chỉ tiêu cụ thể mỗi tuần.
-                </span>
-              </p>
+          <div className="px-5 sm:px-8 lg:pl-80">
+            <div className="mt-10 h-[3px] w-full max-w-xs overflow-hidden rounded-full bg-cream/10">
+              <motion.div style={{ width: progressWidth }} className="h-full rounded-full bg-lime" />
             </div>
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>
