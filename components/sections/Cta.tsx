@@ -8,7 +8,7 @@ export function Cta() {
     <section id="contact" className="px-5 py-24 sm:px-8">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-ink px-8 py-16 text-center text-cream sm:px-16">
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-lime/20 bg-dark-2 px-8 py-16 text-center text-cream sm:px-16">
             <div
               aria-hidden
               className="pointer-events-none absolute -bottom-16 -right-10 select-none text-[14rem] font-black uppercase leading-none text-cream/5"
@@ -24,7 +24,7 @@ export function Cta() {
               Cùng chạy một chiến dịch nhé?
             </h2>
 
-            <p className="mx-auto mt-5 max-w-xl text-cream/70">
+            <p className="mx-auto mt-6 max-w-xl rounded-2xl border border-l-[3px] border-lime/35 border-l-lime bg-lime/[0.07] px-5 py-4 font-callout text-sm leading-relaxed text-cream/85">
               Mình đang tìm cơ hội thực tập/việc làm Digital Marketing để học hỏi và đóng góp thật
               sự. Rất mong được trò chuyện với bạn.
             </p>

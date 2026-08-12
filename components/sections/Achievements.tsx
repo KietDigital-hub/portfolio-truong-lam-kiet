@@ -16,7 +16,7 @@ export function Achievements() {
           <Reveal delay={0.1}>
             <div className="rounded-3xl border border-ink/10 bg-oat-card/50 p-8 sm:p-10">
               <div className="flex items-center gap-4">
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-lime text-ink">
+                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-lime text-on-accent">
                   <Music2 size={26} strokeWidth={2.4} />
                 </span>
                 <div>
@@ -52,7 +52,7 @@ export function Achievements() {
                   className="h-auto w-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-4 -left-4 -rotate-3 rounded-2xl bg-ink px-5 py-3 text-cream shadow-lg">
+              <div className="absolute -bottom-4 -left-4 -rotate-3 rounded-2xl border border-lime/25 bg-dark-2 px-5 py-3 text-cream shadow-lg">
                 <div className="text-xl font-black leading-none text-lime">1.000+</div>
                 <div className="mt-1 text-[11px] font-semibold">followers tự xây dựng</div>
               </div>

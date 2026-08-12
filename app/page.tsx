@@ -5,6 +5,7 @@ import { Divider } from "@/components/ui/Divider";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
+import { Experience } from "@/components/sections/Experience";
 import { Marquee } from "@/components/sections/Marquee";
 import { Projects } from "@/components/sections/Projects";
 import { AiProject } from "@/components/sections/AiProject";
@@ -23,6 +24,7 @@ export default function Home() {
           <Divider />
           <About />
           <Skills />
+          <Experience />
         </div>
         <Marquee />
         <Projects />

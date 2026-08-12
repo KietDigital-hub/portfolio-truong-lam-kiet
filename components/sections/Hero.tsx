@@ -74,7 +74,7 @@ export function Hero() {
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-              className="rounded-2xl bg-ink/75 px-5 py-3 text-cream shadow-lg backdrop-blur-md"
+              className="rounded-2xl bg-dark-2/75 px-5 py-3 text-cream shadow-lg backdrop-blur-md"
             >
               <div className="text-2xl font-black leading-none text-lime">3</div>
               <div className="mt-1 text-xs font-semibold">Nền tảng Ads thực chiến</div>
@@ -82,7 +82,7 @@ export function Hero() {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-              className="rounded-2xl bg-ink/75 px-5 py-3 text-cream shadow-lg backdrop-blur-md"
+              className="rounded-2xl bg-dark-2/75 px-5 py-3 text-cream shadow-lg backdrop-blur-md"
             >
               <div className="text-2xl font-black leading-none text-lime">1.000+</div>
               <div className="mt-1 text-xs font-semibold">TikTok followers</div>
@@ -92,7 +92,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, -6, 0] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-            className="flex flex-col gap-2.5 rounded-2xl bg-ink/60 px-6 py-5 shadow-lg backdrop-blur-md"
+            className="flex flex-col gap-2.5 rounded-2xl bg-dark-2/60 px-6 py-5 shadow-lg backdrop-blur-md"
           >
             {traits.map((trait) => (
               <div key={trait.label} className="flex items-center gap-3">
@@ -104,23 +104,25 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Ảnh chân dung cutout đè giữa wordmark */}
+      {/* Khung ảnh chân dung nổi trên nền minh họa AI */}
       <motion.div
         style={{ y: photoY }}
-        className="relative z-10 mx-auto -mt-2 w-[74vw] max-w-[430px] sm:-mt-8 sm:w-[32vw]"
+        className="relative z-10 mx-auto mt-[24vw] w-[52vw] max-w-[240px] sm:mt-[11vw] sm:w-[18vw]"
       >
-        <Image
-          src="/images/portrait-cutout.png"
-          alt={profile.name}
-          width={1024}
-          height={832}
-          priority
-          className="h-auto w-full drop-shadow-[0_24px_48px_rgba(0,0,0,0.28)] [mask-image:linear-gradient(to_bottom,black_82%,transparent_100%)]"
-        />
+        <div className="overflow-hidden rounded-[2rem] border border-lime/30 bg-dark-2/40 shadow-[0_24px_70px_-18px_rgba(58,165,255,0.45)]">
+          <Image
+            src="/images/portrait-1.jpg"
+            alt={profile.name}
+            width={1024}
+            height={1024}
+            priority
+            className="h-auto w-full object-cover"
+          />
+        </div>
       </motion.div>
 
-      {/* Headline đè lên phần dưới ảnh, màu ink như bản gốc dùng trên nền sáng */}
-      <div className="relative z-20 -mt-4 sm:-mt-14">
+      {/* Headline */}
+      <div className="relative z-20 mt-8 sm:mt-6">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <h1
             ref={headlineRef}

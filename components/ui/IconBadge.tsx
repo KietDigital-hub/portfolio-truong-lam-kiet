@@ -22,7 +22,7 @@ export function IconBadge({ icon, dark = false }: { icon: string; dark?: boolean
   return (
     <span
       className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${
-        dark ? "bg-lime text-ink" : "bg-lime text-ink"
+        dark ? "bg-lime text-on-accent" : "bg-lime text-on-accent"
       }`}
     >
       <Icon size={20} strokeWidth={2.4} />

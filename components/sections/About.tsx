@@ -6,6 +6,7 @@ import { GraduationCap, Users, Briefcase, Flag, UserRound, X } from "lucide-reac
 import { timeline, profile, interests } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { NoteText } from "@/components/ui/NoteText";
 
 const ICONS = { graduation: GraduationCap, users: Users, briefcase: Briefcase, flag: Flag };
 
@@ -69,15 +70,17 @@ export function About() {
                     className="w-full rounded-3xl border border-ink/10 bg-oat-card/60 p-7 text-left shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:rotate-0"
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <span className="text-3xl font-black text-lime [-webkit-text-stroke:1px_var(--color-ink)]">
+                      <span className="text-3xl font-black text-lime [-webkit-text-stroke:1px_var(--color-on-accent)]">
                         {item.year}
                       </span>
-                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink text-lime">
+                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-lime/30 bg-dark-2 text-lime">
                         <Icon size={18} strokeWidth={2.4} />
                       </span>
                     </div>
                     <h3 className="mt-3 text-xl font-black">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.blurb}</p>
+                    <NoteText className="mt-3" tone="soft">
+                      {item.blurb}
+                    </NoteText>
                     <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-ink underline underline-offset-4">
                       Xem thêm
                     </span>
@@ -91,7 +94,7 @@ export function About() {
         <div className="mt-20 grid gap-6 md:grid-cols-2">
           <Reveal delay={0.05}>
             <div className="flex h-full items-start gap-4 rounded-3xl border border-ink/10 bg-oat-card/50 p-8">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-lime text-ink">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-lime text-on-accent">
                 <GraduationCap size={22} strokeWidth={2.4} />
               </span>
               <div>
@@ -105,7 +108,7 @@ export function About() {
 
           <Reveal delay={0.1}>
             <div className="flex h-full items-start gap-4 rounded-3xl border border-ink/10 bg-oat-card/50 p-8">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-lime text-ink">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-lime text-on-accent">
                 <UserRound size={22} strokeWidth={2.4} />
               </span>
               <div>
@@ -133,7 +136,7 @@ export function About() {
       <AnimatePresence>
         {active && (
           <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/70 px-5 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-dark/70 px-5 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

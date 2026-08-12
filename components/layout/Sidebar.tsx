@@ -77,7 +77,7 @@ export function Sidebar() {
                 key={link.href}
                 href={link.href}
                 className={`rounded-xl px-4 py-2.5 text-sm font-bold transition-colors ${
-                  active === link.href ? "bg-lime text-ink" : "text-ink-soft hover:bg-ink/5 hover:text-ink"
+                  active === link.href ? "bg-lime text-on-accent" : "text-ink-soft hover:bg-ink/5 hover:text-ink"
                 }`}
               >
                 {link.label}
@@ -94,7 +94,7 @@ export function Sidebar() {
 
           <Link
             href="#contact"
-            className="rounded-2xl bg-ink px-4 py-3 text-center text-sm font-bold text-oat transition-transform hover:-translate-y-0.5"
+            className="rounded-2xl bg-lime px-4 py-3 text-center text-sm font-bold text-on-accent transition-transform hover:-translate-y-0.5"
           >
             Liên hệ ngay
           </Link>

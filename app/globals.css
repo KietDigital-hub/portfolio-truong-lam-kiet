@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  /* Màu lấy chính xác từ computed styles của heynesh.com (trang tham khảo) */
-  --color-oat: #d5cfbe;
-  --color-oat-card: #ebeada;
-  --color-oat-card-2: #dfdece;
-  --color-ink: #111111;
-  --color-ink-soft: #555652;
-  --color-dark: #0a0a0a;
-  --color-dark-2: #181818;
-  --color-cream: #f5f5f0;
-  --color-lime: #ffff23;
-  --color-lime-soft: #ffffa8;
+  /* Bảng màu lấy từ ảnh nền nen.png: xanh navy sâu + xanh điện phát sáng */
+  --color-oat: #060d1e;
+  --color-oat-card: #0d1a33;
+  --color-oat-card-2: #15243f;
+  --color-ink: #eaf1ff;
+  --color-ink-soft: #9db1d4;
+  --color-dark: #030814;
+  --color-dark-2: #0a1426;
+  --color-cream: #f3f7ff;
+  --color-lime: #3aa5ff;
+  --color-lime-soft: #7fd4ff;
+  --color-on-accent: #04101f;
 }
 
 @theme inline {
@@ -25,8 +26,10 @@
   --color-cream: var(--color-cream);
   --color-lime: var(--color-lime);
   --color-lime-soft: var(--color-lime-soft);
+  --color-on-accent: var(--color-on-accent);
   --font-sans: var(--font-inter);
   --font-display: var(--font-bricolage);
+  --font-callout: var(--font-bevietnam);
 }
 
 html {
@@ -41,7 +44,7 @@ body {
 
 ::selection {
   background: var(--color-lime);
-  color: var(--color-ink);
+  color: var(--color-on-accent);
 }
 
 /* Heading / display type dùng Bricolage Grotesque thay vì font body */
