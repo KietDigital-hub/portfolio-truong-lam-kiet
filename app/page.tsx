@@ -7,6 +7,7 @@ import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
 import { Marquee } from "@/components/sections/Marquee";
 import { Projects } from "@/components/sections/Projects";
+import { AiProject } from "@/components/sections/AiProject";
 import { Achievements } from "@/components/sections/Achievements";
 import { Cta } from "@/components/sections/Cta";
 import { Faq } from "@/components/sections/Faq";
@@ -26,6 +27,7 @@ export default function Home() {
         <Marquee />
         <Projects />
         <div className="lg:pl-80">
+          <AiProject />
           <Achievements />
           <Cta />
           <Faq />

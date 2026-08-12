@@ -176,6 +176,24 @@ export const projects = [
   },
 ] as const;
 
+export const aiProject = {
+  eyebrow: "Dự án AI",
+  title: "Dự án AI đã làm",
+  subtitle: "Video meme người que dựng bằng công cụ AI",
+  youtubeId: "qFIIl43Au94",
+  youtubeUrl: "https://www.youtube.com/watch?v=qFIIl43Au94",
+  channel: "Kaz AI",
+  channelUrl: "https://www.youtube.com/@nhanviendigital1",
+  description:
+    "Sản phẩm thuộc mảng dịch vụ AI: một video meme phong cách người que, từ ý tưởng - kịch bản đến hình ảnh và hậu kỳ đều có sự hỗ trợ của công cụ AI.",
+  tags: ["AI Video", "Meme Content", "Short-form", "CapCut"],
+  points: [
+    "Lên ý tưởng và viết kịch bản meme ngắn với sự hỗ trợ của ChatGPT/Claude.",
+    "Tạo hình ảnh, nhân vật người que bằng công cụ AI thay vì thuê thiết kế.",
+    "Dựng, cắt nhịp và xuất bản video bằng CapCut theo định dạng short-form.",
+  ],
+};
+
 export const achievement = {
   title: "Xây dựng kênh TikTok cá nhân",
   year: "2026",
@@ -220,5 +238,6 @@ export const navLinks = [
   { href: "#about", label: "Mục tiêu" },
   { href: "#skills", label: "Kỹ năng" },
   { href: "#projects", label: "Dự án" },
+  { href: "#ai-project", label: "Dự án AI" },
   { href: "#faq", label: "FAQ" },
 ];
