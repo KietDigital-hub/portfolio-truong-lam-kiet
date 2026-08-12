@@ -33,7 +33,6 @@ export const metrics = [
 ];
 
 export const heroTags = [
-  "AI Tools",
   "Digital Advertising",
   "SEO",
   "Content Marketing",
@@ -88,13 +87,6 @@ export const careerGoals = [
 
 export const skills = [
   {
-    icon: "sparkles",
-    title: "AI Tools",
-    description:
-      "Thế mạnh lớn nhất: dùng AI như một cộng sự trong cả quy trình - từ lên ý tưởng, viết và tối ưu nội dung đến sản xuất hình ảnh, video.",
-    chips: ["ChatGPT", "Claude", "Midjourney", "AI Video", "Content AI"],
-  },
-  {
     icon: "megaphone",
     title: "Digital Advertising",
     description:
@@ -107,6 +99,13 @@ export const skills = [
     description:
       "Viết content chuẩn SEO, đi backlink, quản trị WordPress - tích lũy từ kỳ thực tập tại TinHolding.",
     chips: ["SEO Content", "Backlink", "WordPress"],
+  },
+  {
+    icon: "sparkles",
+    title: "AI Tools",
+    description:
+      "Ứng dụng linh hoạt các công cụ AI để tối ưu hóa hiệu suất viết nội dung và hỗ trợ công việc marketing.",
+    chips: ["ChatGPT", "Claude", "Midjourney"],
   },
   {
     icon: "globe",
@@ -202,21 +201,6 @@ export const aiProject = {
   ],
 };
 
-export const aiHighlights = [
-  {
-    title: "Sản xuất video bằng AI",
-    text: "Tự làm video meme người que từ kịch bản đến hình ảnh và hậu kỳ - không cần thuê thiết kế hay dựng phim.",
-  },
-  {
-    title: "Viết & tối ưu content bằng AI",
-    text: "Dùng AI để research, dựng outline và rút ngắn thời gian viết bài chuẩn SEO, vẫn giữ giọng văn và cấu trúc theo yêu cầu.",
-  },
-  {
-    title: "Tăng tốc quy trình nội dung",
-    text: "Kết hợp AI với Canva và CapCut để ra nội dung short-form nhanh hơn - cách mình xây kênh TikTok lên 1.000 followers.",
-  },
-];
-
 export const achievement = {
   title: "Xây dựng kênh TikTok cá nhân",
   year: "2026",
@@ -260,7 +244,6 @@ export const navLinks = [
   { href: "#home", label: "Trang chủ" },
   { href: "#about", label: "Mục tiêu" },
   { href: "#skills", label: "Kỹ năng" },
-  { href: "#experience", label: "Kinh nghiệm" },
   { href: "#projects", label: "Dự án" },
   { href: "#ai-project", label: "Dự án AI" },
   { href: "#faq", label: "FAQ" },

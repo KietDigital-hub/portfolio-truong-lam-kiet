@@ -79,20 +79,15 @@ site/
 
 | Token | Giá trị | Ghi chú |
 |---|---|---|
-| `--color-oat` | `#060d1e` | nền chính (navy sâu, lấy từ `nen.png`) |
-| `--color-oat-card` | `#0d1a33` | card |
-| `--color-oat-card-2` | `#15243f` | card phụ |
-| `--color-ink` | `#eaf1ff` | **chữ chính (SÁNG)** - đã đảo vai trò từ bản beige cũ |
-| `--color-ink-soft` | `#9db1d4` | chữ phụ |
-| `--color-dark` / `--color-dark-2` | `#030814` / `#0a1426` | nền section tối đặc (Projects, Footer, panel) |
-| `--color-lime` | `#3aa5ff` | accent xanh điện (tên token giữ nguyên để khỏi sửa toàn bộ class) |
-| `--color-on-accent` | `#04101f` | chữ đặt TRÊN nền accent - dùng `text-on-accent`, không dùng `text-ink` |
+| `--color-oat` | `#d5cfbe` | nền chính, đo chính xác từ `body` bg của heynesh.com |
+| `--color-oat-card` | `#ebeada` | card sáng |
+| `--color-oat-card-2` | `#dfdece` | card sáng phụ |
+| `--color-ink` | `#111111` | chữ chính trên nền sáng |
+| `--color-ink-soft` | `#555652` | chữ phụ |
+| `--color-dark` / `--color-dark-2` | `#0a0a0a` / `#181818` | nền section tối (Projects) |
+| `--color-lime` | `#ffff23` | **vàng thuần**, KHÔNG phải vàng-chanh ngả xanh — đo chính xác từ accent color của reference, đừng đoán lại bằng mắt |
 
 Nguyên tắc: 2 nền + 1 accent, dùng accent có chủ đích (CTA, số liệu, icon).
-
-### Nền toàn trang
-
-`components/ui/SiteBackground.tsx` - ảnh `public/images/nen.png` (minh họa AI do Kiệt tạo) đặt `fixed inset-0 -z-30`, `opacity-45 blur-[6px]` + 2 lớp phủ navy để chữ luôn đọc được. Section nền tối đặc (Projects, Footer) che ảnh này; các section còn lại để lộ ánh sáng xanh phía sau. Muốn ảnh rõ/mờ hơn thì chỉnh opacity + độ đậm lớp phủ trong file đó, KHÔNG đổi `bg` của body.
 
 ### Typography
 
@@ -106,8 +101,6 @@ Nguyên tắc: 2 nền + 1 accent, dùng accent có chủ đích (CTA, số li�
 - **Hero**: chữ "KIET" (không dấu, xem "Bài học") khổng lồ màu lime làm nền, ảnh chân dung cutout đè giữa, headline 3 dòng đè lên phần dưới ảnh, 2 badge số liệu + 1 panel tag kỹ năng nổi kiểu glass (chỉ desktop, `hidden lg:block`), CTA + mô tả hàng dưới, metric strip 4 cột cuối section. SplitText animate headline khi mount.
 - **Sidebar** (thay navbar sau khi qua Hero): logo/mô tả ngắn, 2 stat nhỏ, nav list scroll-spy (active = nền lime), email, nút "Liên hệ ngay". Chỉ desktop (`hidden lg:flex`).
 - **About**: timeline 4 mốc thật (2023 nhập học → 2025 làm Leader 2 dự án → 2026 thực tập TinHolding → 2026 tốt nghiệp) xếp so le trái/phải, nối bằng SVG connector, click "Xem thêm" mở modal tối chi tiết (AnimatePresence).
-- **Experience** (`sections/Experience.tsx`): kinh nghiệm làm việc tách RIÊNG khỏi Projects (yêu cầu của Kiệt) - card trái là thông tin vị trí + KPI được giao, card phải là 6 đầu việc + 1 khối `NoteText` "Điều rút ra".
-- **Skills**: card AI Tools được tách lên đầu làm card nổi bật (viền accent + glow + 3 highlight từ `aiHighlights`) vì AI là thế mạnh mạnh nhất của Kiệt; 5 kỹ năng còn lại nằm ở lưới 3 cột bên dưới.
 - **Projects**: horizontal pinned-scroll (sticky container + `useScroll`/`useTransform` translateX theo `scrollYProgress`) — KHÔNG phải grid tĩnh. Slide gồm: intro → thực tập TinHolding → 2 dự án Leader, mỗi card có ảnh Unsplash trang trí + progress bar dưới cùng.
 - **FAQ**: lưới 2 cột, chữ cái "K" khổng lồ mờ làm nền trang trí.
 - **Divider**: SVG đường cong vẽ tay, tự "vẽ" (`pathLength` animate) khi scroll tới, đặt giữa Hero và About.

@@ -28,7 +28,7 @@ export function Marquee() {
   const loop = [...items, ...items];
 
   return (
-    <section aria-label="Công cụ & kỹ năng" className="overflow-hidden border-y border-lime/15 bg-dark-2 py-5">
+    <section aria-label="Công cụ & kỹ năng" className="overflow-hidden bg-ink py-5">
       <motion.div
         className="flex w-max gap-8 whitespace-nowrap"
         animate={reduce ? undefined : { x: ["0%", "-50%"] }}
