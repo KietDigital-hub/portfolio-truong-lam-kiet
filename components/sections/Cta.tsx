@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
 import { profile } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
@@ -8,7 +9,17 @@ export function Cta() {
     <section id="contact" className="px-5 py-24 sm:px-8">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-ink px-8 py-16 text-center text-cream sm:px-16">
+          <div className="relative isolate overflow-hidden rounded-[2.5rem] border-[3px] border-lime bg-ink px-8 py-16 text-center text-cream sm:px-16">
+            <div aria-hidden className="absolute inset-0 -z-10">
+              <Image
+                src="/images/nen3.png"
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 1100px"
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-ink/88" />
+            </div>
             <div
               aria-hidden
               className="pointer-events-none absolute -bottom-16 -right-10 select-none text-[14rem] font-black uppercase leading-none text-cream/5"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { faqs } from "@/lib/profile";
@@ -11,15 +12,28 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden px-5 py-24 sm:px-8">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-10 top-0 select-none text-[16rem] font-black uppercase leading-none text-ink/[0.04] sm:text-[22rem]"
-      >
-        K
-      </div>
+    <section id="faq" className="px-5 py-24 sm:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="relative isolate overflow-hidden rounded-[2.5rem] border-[3px] border-ink px-5 py-16 shadow-[0_30px_70px_-45px_rgba(0,0,0,0.6)] sm:px-10 sm:py-20">
+          <div aria-hidden className="absolute inset-0 -z-10">
+            <Image
+              src="/images/nen3.png"
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 1100px"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-oat/88" />
+          </div>
 
-      <div className="relative mx-auto max-w-5xl">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-10 top-0 select-none text-[16rem] font-black uppercase leading-none text-ink/[0.06] sm:text-[22rem]"
+          >
+            K
+          </div>
+
+        <div className="relative mx-auto max-w-5xl">
         <Reveal>
           <SectionHeading eyebrow="FAQ" title="Nhà tuyển dụng hay hỏi gì?" />
         </Reveal>
@@ -29,7 +43,7 @@ export function Faq() {
             const isOpen = openIndex === i;
             return (
               <Reveal key={item.q} delay={(i % 4) * 0.05} className={i === faqs.length - 1 ? "sm:col-span-2" : ""}>
-                <div className="h-full overflow-hidden rounded-2xl border border-ink/10 bg-oat-card/40">
+                <div className="h-full overflow-hidden rounded-2xl border border-ink/15 bg-oat-card/85 backdrop-blur-sm">
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
@@ -60,6 +74,8 @@ export function Faq() {
               </Reveal>
             );
           })}
+        </div>
+        </div>
         </div>
       </div>
     </section>

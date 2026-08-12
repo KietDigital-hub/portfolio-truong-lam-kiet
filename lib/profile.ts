@@ -128,7 +128,7 @@ export const skills = [
 export const experience = {
   role: "Thực tập sinh SEO (TTS SEO)",
   company: "TinHolding",
-  companyUrl: "https://tinholding.com",
+  companyUrl: "https://tinholdings.com/",
   period: "22/5/2026-22/8/2026",
   tasks: [
     "Thiết kế lại giao diện website dạng blog trên WordPress: trang chủ, trang giới thiệu, trang bài viết đơn - xử lý lỗi hiển thị và kiểm tra bản mobile",
