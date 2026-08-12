@@ -17,7 +17,7 @@ export function Achievements() {
               sizes="(max-width: 1024px) 100vw, 1100px"
               className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-oat/88" />
+            <div className="absolute inset-0 bg-gradient-to-b from-oat/70 via-oat/62 to-oat/72" />
           </div>
 
         <Reveal>
@@ -26,7 +26,7 @@ export function Achievements() {
 
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <Reveal delay={0.1}>
-            <div className="rounded-3xl border border-ink/10 bg-oat-card/50 p-8 sm:p-10">
+            <div className="rounded-3xl border border-ink/10 bg-oat-card/92 p-8 shadow-xl backdrop-blur-sm sm:p-10">
               <div className="flex items-center gap-4">
                 <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-lime text-ink">
                   <Music2 size={26} strokeWidth={2.4} />

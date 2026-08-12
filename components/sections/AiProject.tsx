@@ -23,7 +23,7 @@ export function AiProject() {
               sizes="(max-width: 1024px) 100vw, 1100px"
               className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-oat/88" />
+            <div className="absolute inset-0 bg-gradient-to-b from-oat/70 via-oat/62 to-oat/72" />
           </div>
 
         <Reveal>
@@ -82,7 +82,7 @@ export function AiProject() {
           </Reveal>
 
           <Reveal delay={0.18}>
-            <div className="rounded-3xl border border-ink/10 bg-oat-card/50 p-8 sm:p-10">
+            <div className="rounded-3xl border border-ink/10 bg-oat-card/92 p-8 shadow-xl backdrop-blur-sm sm:p-10">
               <div className="flex flex-wrap gap-2">
                 {aiProject.tags.map((tag) => (
                   <Chip key={tag}>{tag}</Chip>
