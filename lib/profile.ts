@@ -62,7 +62,7 @@ export const timeline = [
     title: "Bước vào thực chiến",
     blurb: "Thực tập sinh SEO tại TinHolding - công việc thật, deadline thật.",
     detail:
-      "Thiết kế website công ty, quản trị WordPress, đi backlink và viết content chuẩn SEO trong suốt 3 tháng (21/5-21/8/2026).",
+      "3 tháng (22/5-22/8/2026) làm SEO đúng nghĩa: thiết kế lại giao diện website WordPress, research từ khóa và lên outline, viết - đăng - tối ưu bài chuẩn SEO, đi backlink offpage theo KPI tuần và báo cáo tiến độ định kỳ.",
   },
   {
     year: "2026",
@@ -133,12 +133,19 @@ export const experience = {
   role: "Thực tập sinh SEO (TTS SEO)",
   company: "TinHolding",
   companyUrl: "https://tinholding.com",
-  period: "21/5/2026-21/8/2026",
+  period: "22/5/2026-22/8/2026",
   tasks: [
-    "Thiết kế website cho công ty",
-    "Quản trị WordPress của công ty",
-    "Đi backlink (SEO offpage)",
-    "Viết bài content chuẩn SEO",
+    "Thiết kế lại giao diện website dạng blog trên WordPress: trang chủ, trang giới thiệu, trang bài viết đơn - xử lý lỗi hiển thị và kiểm tra bản mobile",
+    "Viết và đăng bài content chuẩn SEO 1.000-1.200 chữ/bài, kèm 3-7 hình ảnh tự thiết kế theo quy chuẩn thương hiệu",
+    "Research từ khóa và lên outline bài viết, phân loại nội dung theo cấp 0/1/2 với keyword chính - pillar - URL rõ ràng",
+    "Tối ưu bài viết cũ: bổ sung nội dung, chỉnh thẻ meta (title, description) và liên kết nội bộ",
+    "Rà soát và lập danh sách bài viết bị trùng từ khóa để xử lý, tránh cạnh tranh nội bộ",
+    "Đi backlink offpage: backlink profile chuẩn NAP, forum, blog 2.0 và Google Site cho hệ thống website vệ tinh",
+  ],
+  kpis: [
+    "7 bài mới/tuần",
+    "10 bài tối ưu/tuần",
+    "100 backlink/tuần",
   ],
 };
 
@@ -207,7 +214,7 @@ export const achievement = {
 export const faqs = [
   {
     q: "Bạn đã có kinh nghiệm thực tế chưa?",
-    a: "Mình đang thực tập vị trí SEO tại TinHolding (thiết kế website, quản trị WordPress, đi backlink, viết content chuẩn SEO), song song với 2 dự án học phần đảm nhận vai trò Leader.",
+    a: "Mình đang thực tập vị trí SEO tại TinHolding: thiết kế lại giao diện website WordPress, research từ khóa và lên outline, viết - đăng - tối ưu bài chuẩn SEO, đi backlink offpage theo KPI hàng tuần. Song song đó là 2 dự án học phần mình đảm nhận vai trò Leader.",
   },
   {
     q: "Bạn mạnh nhất ở mảng nào?",
@@ -215,7 +222,7 @@ export const faqs = [
   },
   {
     q: "Bạn có thể bắt đầu công việc khi nào?",
-    a: "Sau khi kết thúc kỳ thực tập hiện tại (21/8/2026), hoặc sớm hơn nếu là vị trí part-time/song song.",
+    a: "Sau khi kết thúc kỳ thực tập hiện tại (22/8/2026), hoặc sớm hơn nếu là vị trí part-time/song song.",
   },
   {
     q: "Bạn dùng công cụ AI trong công việc như thế nào?",

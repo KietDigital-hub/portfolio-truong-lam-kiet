@@ -96,9 +96,9 @@ export function Projects() {
                 return (
                   <div
                     key="experience"
-                    className="flex w-[85vw] shrink-0 flex-col overflow-hidden rounded-3xl border border-cream/10 bg-dark-2 sm:w-[420px]"
+                    className="flex w-[85vw] shrink-0 flex-col overflow-hidden rounded-3xl border border-cream/10 bg-dark-2 sm:w-[480px]"
                   >
-                    <div className="relative h-40 w-full">
+                    <div className="relative h-24 w-full sm:h-40">
                       <Image
                         src={CARD_IMAGES.experience}
                         alt=""
@@ -114,22 +114,43 @@ export function Projects() {
                         Đang diễn ra
                       </span>
                     </div>
-                    <div className="flex flex-1 flex-col p-8 pt-5">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-lime text-ink">
-                      <Icon size={20} strokeWidth={2.4} />
+                    <div className="flex flex-1 flex-col p-6 pt-4 sm:p-8 sm:pt-5">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-lime text-ink sm:h-11 sm:w-11">
+                      <Icon size={18} strokeWidth={2.4} />
                     </span>
-                    <h3 className="mt-4 text-xl font-black leading-snug">{experience.role}</h3>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-cream/40">
+                    <h3 className="mt-3 text-lg font-black leading-snug sm:mt-4 sm:text-xl">
+                      {experience.role}
+                    </h3>
+                    <p className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-cream/40 sm:text-xs">
                       {experience.company} · {experience.period}
                     </p>
-                    <ul className="mt-5 space-y-2.5">
+                    <ul className="mt-4 space-y-2 sm:mt-5 sm:space-y-2.5">
                       {experience.tasks.map((task) => (
-                        <li key={task} className="flex gap-2.5 text-sm text-cream/75">
-                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-lime" />
+                        <li
+                          key={task}
+                          className="flex gap-2.5 text-[12px] leading-snug text-cream/75 sm:text-[13px] sm:leading-relaxed"
+                        >
+                          <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-lime" />
                           <span>{task}</span>
                         </li>
                       ))}
                     </ul>
+
+                    <div className="mt-4 border-t border-cream/10 pt-3 sm:mt-6 sm:pt-4">
+                      <span className="text-[11px] font-black uppercase tracking-[0.2em] text-cream/40">
+                        KPI được giao
+                      </span>
+                      <div className="mt-2.5 flex flex-wrap gap-2">
+                        {experience.kpis.map((kpi) => (
+                          <span
+                            key={kpi}
+                            className="rounded-full bg-lime/15 px-3 py-1 text-xs font-bold text-lime"
+                          >
+                            {kpi}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                     </div>
                   </div>
                 );
