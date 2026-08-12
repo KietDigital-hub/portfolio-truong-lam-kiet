@@ -145,6 +145,40 @@ export const experience = {
   ],
 };
 
+export const projects = [
+  {
+    index: "01",
+    title: "Đề án Marketing Kỹ thuật số",
+    role: "Leader",
+    period: "10/11/2025-30/3/2026",
+    tags: ["Multi-channel Ads", "Landing Page", "Content"],
+    description:
+      "Lập kế hoạch tổng thể, điều phối nhóm, xây dựng Landing Page phục vụ quảng cáo chuyển đổi và trực tiếp vận hành ngân sách trên Facebook Ads, Google Ads, TikTok Ads.",
+    points: [
+      "Lập kế hoạch tổng thể, phân chia công việc, theo dõi tiến độ nhóm",
+      "Thiết kế & tối ưu Landing Page/Website phục vụ quảng cáo chuyển đổi (UX/UI)",
+      "Thiết lập, vận hành, tối ưu ngân sách trên Facebook Ads, Google Ads, TikTok Ads",
+      "Viết content đa kênh (Website, Fanpage), xây dựng Content Calendar",
+    ],
+  },
+  {
+    index: "02",
+    title: "Phát triển Website Căn bản",
+    role: "Leader",
+    period: "10/11/2025-30/4/2026",
+    tags: ["WordPress", "E-commerce", "SEO"],
+    description:
+      "Quản trị hosting, tên miền, dựng website WordPress theo phong cách e-commerce hiện đại - tích hợp giỏ hàng, thanh toán và chatbot tự động.",
+    points: [
+      "Quản trị Hosting & tên miền, cài đặt/cấu hình WordPress",
+      "Thiết kế UI/UX trang chủ, danh mục, chi tiết sản phẩm theo phong cách e-commerce",
+      "Tích hợp giỏ hàng, thanh toán, quản lý đơn hàng",
+      "Tích hợp Chatbot tự động hỗ trợ khách hàng 24/7",
+      "Xây dựng bài viết chuẩn SEO, kiểm soát lỗi kỹ thuật",
+    ],
+  },
+] as const;
+
 export const tools = [
   {
     name: "ChatGPT",
@@ -270,6 +304,7 @@ export const navLinks = [
   { href: "#about", label: "Mục tiêu" },
   { href: "#skills", label: "Kỹ năng" },
   { href: "#experience", label: "Kinh nghiệm" },
+  { href: "#projects", label: "Dự án" },
   { href: "#ai-project", label: "Dự án AI" },
   { href: "#faq", label: "FAQ" },
 ];
