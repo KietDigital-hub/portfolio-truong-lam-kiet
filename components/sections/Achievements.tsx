@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { Music2 } from "lucide-react";
 import { achievement } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
@@ -26,13 +26,13 @@ export function Achievements() {
 
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <Reveal delay={0.1}>
-            <div className="rounded-3xl border border-ink/10 bg-oat-card/92 p-8 shadow-xl backdrop-blur-sm sm:p-10">
+            <div className="rounded-3xl border-[3px] border-ink bg-white p-8 shadow-xl sm:p-10">
               <div className="flex items-center gap-4">
                 <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-lime text-ink">
                   <Music2 size={26} strokeWidth={2.4} />
                 </span>
                 <div>
-                  <div className="text-xs font-black uppercase tracking-[0.2em] text-ink-soft">
+                  <div className="text-xs font-black uppercase tracking-[0.2em] text-ink">
                     {achievement.year}
                   </div>
                   <div className="text-xl font-black">{achievement.title}</div>
@@ -43,7 +43,7 @@ export function Achievements() {
                 {achievement.points.map((point) => (
                   <li
                     key={point}
-                    className="flex gap-3 text-sm leading-relaxed text-ink-soft sm:text-base"
+                    className="flex gap-3 text-sm font-medium leading-relaxed text-ink sm:text-base"
                   >
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-lime brightness-75" />
                     <span>{point}</span>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -82,14 +82,14 @@ export function AiProject() {
           </Reveal>
 
           <Reveal delay={0.18}>
-            <div className="rounded-3xl border border-ink/10 bg-oat-card/92 p-8 shadow-xl backdrop-blur-sm sm:p-10">
+            <div className="rounded-3xl border-[3px] border-ink bg-white p-8 shadow-xl sm:p-10">
               <div className="flex flex-wrap gap-2">
                 {aiProject.tags.map((tag) => (
                   <Chip key={tag}>{tag}</Chip>
                 ))}
               </div>
 
-              <p className="mt-6 text-sm leading-relaxed text-ink-soft sm:text-base">
+              <p className="mt-6 text-sm font-medium leading-relaxed text-ink sm:text-base">
                 {aiProject.description}
               </p>
 
@@ -97,7 +97,7 @@ export function AiProject() {
                 {aiProject.points.map((point) => (
                   <li
                     key={point}
-                    className="flex gap-3 text-sm leading-relaxed text-ink-soft sm:text-base"
+                    className="flex gap-3 text-sm font-medium leading-relaxed text-ink sm:text-base"
                   >
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-lime brightness-75" />
                     <span>{point}</span>

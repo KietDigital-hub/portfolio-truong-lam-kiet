@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
@@ -166,14 +166,14 @@ export function Hero() {
       {/* Metric strip */}
       <div className="relative z-20 mx-auto w-full max-w-6xl px-5 pb-14 sm:px-8">
         <Reveal delay={0.2}>
-          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border-2 border-ink bg-ink sm:grid-cols-4">
             {metrics.map((m) => (
-              <div key={m.label} className="bg-oat-card/40 px-6 py-6">
+              <div key={m.label} className="bg-white px-6 py-6">
                 <div className="text-3xl font-black leading-none">
                   {m.value}
                   <span className="text-lime brightness-[0.6] saturate-200">{m.suffix}</span>
                 </div>
-                <div className="mt-2 text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                <div className="mt-2 text-xs font-bold uppercase tracking-wide text-ink">
                   {m.label}
                 </div>
               </div>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -29,7 +29,7 @@ export function Faq() {
             const isOpen = openIndex === i;
             return (
               <Reveal key={item.q} delay={(i % 4) * 0.05} className={i === faqs.length - 1 ? "sm:col-span-2" : ""}>
-                <div className="h-full overflow-hidden rounded-2xl border border-ink/10 bg-oat-card/40">
+                <div className="h-full overflow-hidden rounded-2xl border-[3px] border-ink bg-white">
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
@@ -52,7 +52,7 @@ export function Faq() {
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="px-6 pb-5 text-sm leading-relaxed text-ink-soft">{item.a}</p>
+                        <p className="px-6 pb-5 text-sm font-medium leading-relaxed text-ink">{item.a}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>

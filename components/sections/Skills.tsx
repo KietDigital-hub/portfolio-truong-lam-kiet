@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { skills, tools } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -65,10 +65,10 @@ export function Skills() {
             {skills.map((skill, i) => (
               <Reveal key={skill.title} delay={(i % 3) * 0.08} className="h-full">
                 <Tilt3D className="h-full rounded-3xl">
-                  <div className="flex h-full flex-col rounded-3xl border border-cream/15 bg-oat-card/92 p-7 shadow-xl">
+                  <div className="flex h-full flex-col rounded-3xl border-[3px] border-ink bg-white p-7 shadow-xl">
                     <IconBadge icon={skill.icon} />
                     <h3 className="mt-5 text-lg font-black">{skill.title}</h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
+                    <p className="mt-2 flex-1 text-sm font-medium leading-relaxed text-ink">
                       {skill.description}
                     </p>
                     <div className="mt-5 flex flex-wrap gap-2">

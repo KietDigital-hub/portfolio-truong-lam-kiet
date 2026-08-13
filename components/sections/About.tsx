@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -82,7 +82,7 @@ export function About() {
                   {i > 0 && <Connector flip={alignRight} />}
                   <button
                     onClick={() => setOpenIndex(i)}
-                    className="w-full rounded-3xl border border-cream/15 bg-oat-card/92 p-7 text-left shadow-xl transition-transform duration-300 hover:-translate-y-1 hover:rotate-0"
+                    className="w-full rounded-3xl border-[3px] border-ink bg-white p-7 text-left shadow-xl transition-transform duration-300 hover:-translate-y-1 hover:rotate-0"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <span className="text-3xl font-black text-lime [-webkit-text-stroke:1px_var(--color-ink)]">
@@ -93,7 +93,7 @@ export function About() {
                       </span>
                     </div>
                     <h3 className="mt-3 text-xl font-black">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.blurb}</p>
+                    <p className="mt-2 text-sm font-medium leading-relaxed text-ink">{item.blurb}</p>
                     <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-ink underline underline-offset-4">
                       Xem thêm
                     </span>
@@ -106,13 +106,13 @@ export function About() {
 
         <div className="mt-20 grid gap-6">
           <Reveal delay={0.05}>
-            <div className="flex h-full items-start gap-4 rounded-3xl border border-cream/15 bg-oat-card/90 p-8">
+            <div className="flex h-full items-start gap-4 rounded-3xl border-[3px] border-ink bg-white p-8">
               <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-lime text-ink">
                 <GraduationCap size={22} strokeWidth={2.4} />
               </span>
               <div>
                 <div className="font-black">{profile.school}</div>
-                <p className="mt-1 text-sm text-ink-soft">
+                <p className="mt-1 text-sm font-medium text-ink">
                   {profile.major} · {profile.schoolYears}
                 </p>
               </div>
