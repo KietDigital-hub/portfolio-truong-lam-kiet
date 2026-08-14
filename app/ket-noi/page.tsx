@@ -5,13 +5,14 @@ import { Footer } from "@/components/layout/Footer";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SocialGrid } from "@/components/sections/SocialGrid";
+import { LinkBioCard } from "@/components/sections/LinkBioCard";
 import { profile } from "@/lib/profile";
 import { socials } from "@/lib/socials";
 
 export const metadata: Metadata = {
   title: "Connect · Truong Lam Kiet",
   description:
-    "Every social account of Truong Lam Kiet in one place: Behance, Facebook, TikTok, Instagram, X, LinkedIn, GitHub, Reddit, Discord, Spotify and PayPal.",
+    "Every social account of Truong Lam Kiet in one place: Beacons link in bio, Behance, Facebook, TikTok, Instagram, Threads, X, Telegram, LinkedIn, GitHub, Reddit, Discord, Spotify, Steam and PayPal.",
 };
 
 export default function KetNoiPage() {
@@ -75,6 +76,10 @@ export default function KetNoiPage() {
             </div>
 
             <div className="mt-16">
+              <LinkBioCard />
+            </div>
+
+            <div className="mt-6">
               <SocialGrid />
             </div>
 

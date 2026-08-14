@@ -2,6 +2,7 @@ import { Mail, Phone } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SocialGrid } from "@/components/sections/SocialGrid";
+import { LinkBioCard } from "@/components/sections/LinkBioCard";
 import { profile } from "@/lib/profile";
 
 export function Connect() {
@@ -21,6 +22,10 @@ export function Connect() {
         </Reveal>
 
         <div className="mt-12">
+          <LinkBioCard />
+        </div>
+
+        <div className="mt-6">
           <SocialGrid />
         </div>
 
