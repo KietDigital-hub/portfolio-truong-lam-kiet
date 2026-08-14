@@ -29,9 +29,9 @@
   --font-display: var(--font-bricolage);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* KHÔNG đặt `scroll-behavior: smooth` ở đây: cuộn mượt do Lenis đảm nhiệm,
+   để native smooth-scroll bật cùng lúc sẽ xung đột và làm kẹt lăn chuột
+   sau khi bấm link neo (#about, #skills...). */
 
 body {
   background: var(--color-oat);

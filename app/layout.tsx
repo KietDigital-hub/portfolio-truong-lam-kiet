@@ -5,6 +5,9 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import "./globals.css";
+// CSS khuyến nghị của Lenis (ép html/body về height:auto, xử lý [data-lenis-prevent]...).
+// Thiếu file này thì `h-full` trên <html> làm Lenis tính sai chiều cao và cuộn bị kẹt.
+import "lenis/dist/lenis.css";
 
 const inter = Inter({
   variable: "--font-inter",
