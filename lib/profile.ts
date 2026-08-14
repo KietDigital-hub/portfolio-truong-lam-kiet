@@ -8,6 +8,8 @@ export const profile = {
   email: "kiettruong086@gmail.com",
   facebook: "facebook.com/kiett856",
   facebookUrl: "https://facebook.com/kiett856",
+  behance: "behance.net/KietDigital",
+  behanceUrl: "https://www.behance.net/KietDigital",
   school: "Trường Đại học Văn Lang",
   major: "Chuyên ngành Digital Marketing",
   schoolYears: "2023-2026",
