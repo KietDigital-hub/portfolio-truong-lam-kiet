@@ -1,9 +1,13 @@
+import Link from "next/link";
 import { Mail, Phone, Link2 } from "lucide-react";
 import { profile } from "@/lib/profile";
 
-export function Footer() {
+/** `withSidebar` = trang có Sidebar cố định bên trái nên cần chừa chỗ (lg:pl-80). */
+export function Footer({ withSidebar = true }: { withSidebar?: boolean }) {
   return (
-    <footer className="bg-dark px-5 py-14 text-cream sm:px-8 lg:pl-80">
+    <footer
+      className={`bg-dark px-5 py-14 text-cream sm:px-8 ${withSidebar ? "lg:pl-80" : ""}`}
+    >
       <div className="mx-auto flex max-w-6xl flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <div className="text-2xl font-black">
@@ -28,14 +32,12 @@ export function Footer() {
           >
             <Phone size={16} /> {profile.phone}
           </a>
-          <a
-            href={profile.facebookUrl}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/ket-noi"
             className="inline-flex items-center gap-2 rounded-full border border-cream/15 px-4 py-2 hover:border-lime hover:text-lime"
           >
-            <Link2 size={16} /> Facebook
-          </a>
+            <Link2 size={16} /> Tất cả kênh
+          </Link>
         </div>
       </div>
 

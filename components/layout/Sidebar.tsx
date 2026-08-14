@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail } from "lucide-react";
+import { Mail, Share2 } from "lucide-react";
 import { navLinks, profile } from "@/lib/profile";
 
 export function Sidebar() {
@@ -84,6 +84,13 @@ export function Sidebar() {
               </Link>
             ))}
           </nav>
+
+          <Link
+            href="/ket-noi"
+            className="flex items-center gap-2 rounded-2xl border-[3px] border-ink bg-white px-4 py-3 text-xs font-bold text-ink hover:bg-lime"
+          >
+            <Share2 size={14} /> Tất cả kênh MXH
+          </Link>
 
           <a
             href={`mailto:${profile.email}`}
