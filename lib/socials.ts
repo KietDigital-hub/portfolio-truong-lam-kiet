@@ -112,7 +112,7 @@ export const socials: Social[] = [
   {
     key: "spotify",
     name: "Spotify",
-    handle: "Hồ sơ nghe nhạc",
+    handle: "Listening profile",
     url: "https://open.spotify.com/user/31iiqkifbp3g6xrpunfv3m5anniu",
     hex: "#1ED760",
     fg: "dark",

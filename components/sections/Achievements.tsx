@@ -21,7 +21,7 @@ export function Achievements() {
           </div>
 
         <Reveal>
-          <SectionHeading eyebrow="Thành tựu" title="Tự học, tự làm, tự đo lường kết quả." />
+          <SectionHeading eyebrow="Achievement" title="Self-taught, self-shipped, self-measured." />
         </Reveal>
 
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -58,15 +58,15 @@ export function Achievements() {
               <div className="rotate-2 overflow-hidden rounded-3xl border-[6px] border-dark bg-dark shadow-2xl transition-transform duration-300 hover:rotate-0">
                 <Image
                   src="/images/deco-social.jpg"
-                  alt="Minh họa mạng xã hội"
+                  alt="Social media illustration"
                   width={1200}
                   height={800}
                   className="h-auto w-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-4 -left-4 -rotate-3 rounded-2xl bg-ink px-5 py-3 text-cream shadow-lg">
-                <div className="text-xl font-black leading-none text-lime">1.000+</div>
-                <div className="mt-1 text-[11px] font-semibold">followers tự xây dựng</div>
+                <div className="text-xl font-black leading-none text-lime">AI</div>
+                <div className="mt-1 text-[11px] font-semibold">powered pipeline</div>
               </div>
             </div>
           </Reveal>

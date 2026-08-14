@@ -10,11 +10,11 @@ import { Button } from "@/components/ui/Button";
 import { gsap, SplitText } from "@/lib/gsap";
 
 const traits = [
-  { icon: Sparkles, label: "Sáng tạo" },
-  { icon: Target, label: "Chiến lược" },
-  { icon: Rocket, label: "Thực thi" },
-  { icon: PenTool, label: "Content" },
-  { icon: BarChart3, label: "Dữ liệu" },
+  { icon: Sparkles, label: "AI-first" },
+  { icon: Target, label: "Agents" },
+  { icon: Rocket, label: "Automation" },
+  { icon: PenTool, label: "AI Web Design" },
+  { icon: BarChart3, label: "Data" },
 ];
 
 export function Hero() {
@@ -76,16 +76,16 @@ export function Hero() {
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
               className="rounded-2xl bg-ink/75 px-5 py-3 text-cream shadow-lg backdrop-blur-md"
             >
-              <div className="text-2xl font-black leading-none text-lime">3</div>
-              <div className="mt-1 text-xs font-semibold">Nền tảng Ads thực chiến</div>
+              <div className="text-2xl font-black leading-none text-lime">8</div>
+              <div className="mt-1 text-xs font-semibold">AI tools in daily use</div>
             </motion.div>
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
               className="rounded-2xl bg-ink/75 px-5 py-3 text-cream shadow-lg backdrop-blur-md"
             >
-              <div className="text-2xl font-black leading-none text-lime">1.000+</div>
-              <div className="mt-1 text-xs font-semibold">TikTok followers</div>
+              <div className="text-2xl font-black leading-none text-lime">3</div>
+              <div className="mt-1 text-xs font-semibold">AI agent platforms</div>
             </motion.div>
           </div>
 
@@ -128,9 +128,9 @@ export function Hero() {
           >
             Digital Marketing,
             <br />
-            học thật.
+            powered by AI.
             <br />
-            Làm thật.
+            Built end to end.
           </h1>
         </div>
       </div>
@@ -139,19 +139,19 @@ export function Hero() {
       <div className="relative z-20 mx-auto mt-8 grid w-full max-w-6xl items-end gap-8 px-5 pb-10 sm:px-8 lg:grid-cols-[1fr_auto_1fr]">
         <Reveal delay={0.5}>
           <p className="hidden text-sm leading-relaxed text-ink-soft lg:block">
-            Sinh viên Digital Marketing.
+            Digital Marketing student.
             <br />
-            Đó là Kiệt.
+            That&apos;s Kiet.
           </p>
         </Reveal>
 
         <Reveal delay={0.6}>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button href="#contact" variant="primary">
-              Liên hệ ngay
+              Get in touch
             </Button>
-            <Button href="#experience" variant="primary">
-              Xem kinh nghiệm
+            <Button href="#skills" variant="primary">
+              See my AI stack
             </Button>
           </div>
         </Reveal>

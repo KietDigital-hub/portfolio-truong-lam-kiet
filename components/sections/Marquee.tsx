@@ -3,21 +3,22 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 // Các công cụ/kỹ năng thật đã có trong hồ sơ (không bịa thêm).
+// Ưu tiên AI lên đầu dải chạy theo định vị hồ sơ.
 const items = [
-  "Facebook Ads",
-  "Google Ads",
-  "TikTok Ads",
-  "SEO Content",
-  "Backlink",
-  "WordPress",
+  "Claude Code",
+  "OpenClaw",
+  "n8n",
+  "AI Agents",
+  "Automation",
   "ChatGPT",
   "Claude",
-  "Midjourney",
-  "Canva",
-  "CapCut",
-  "Content Calendar",
-  "Fanpage",
+  "Seedance",
+  "Magnific",
+  "AI Web Design",
   "UX / UI",
+  "SEO Content",
+  "WordPress",
+  "CapCut",
 ];
 
 /**
@@ -28,7 +29,7 @@ export function Marquee() {
   const loop = [...items, ...items];
 
   return (
-    <section aria-label="Công cụ & kỹ năng" className="overflow-hidden bg-ink py-5">
+    <section aria-label="Tools and skills" className="overflow-hidden bg-ink py-5">
       <motion.div
         className="flex w-max gap-8 whitespace-nowrap"
         animate={reduce ? undefined : { x: ["0%", "-50%"] }}

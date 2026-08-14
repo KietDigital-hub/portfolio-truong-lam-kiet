@@ -5,6 +5,7 @@ import {
   Globe,
   Share2,
   Palette,
+  Workflow,
   type LucideIcon,
 } from "lucide-react";
 
@@ -15,6 +16,7 @@ const ICONS: Record<string, LucideIcon> = {
   globe: Globe,
   share: Share2,
   palette: Palette,
+  workflow: Workflow,
 };
 
 export function IconBadge({ icon, dark = false }: { icon: string; dark?: boolean }) {

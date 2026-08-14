@@ -10,13 +10,13 @@ export function Connect() {
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
-            eyebrow="Kết nối"
+            eyebrow="Connect"
             title={
               <>
-                Tìm mình ở <span className="text-lime [-webkit-text-stroke:2px_var(--color-ink)]">mọi nơi</span>
+                Find me <span className="text-lime [-webkit-text-stroke:2px_var(--color-ink)]">everywhere</span>
               </>
             }
-            description="Bấm vào logo để mở thẳng kênh tương ứng."
+            description="Tap a logo to jump straight to that channel."
           />
         </Reveal>
 

@@ -20,9 +20,9 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "Trương Lâm Kiệt · Digital Marketing",
+  title: "Truong Lam Kiet · Digital Marketing",
   description:
-    "Portfolio của Trương Lâm Kiệt - sinh viên năm cuối Digital Marketing, Đại học Văn Lang. Thực tập sinh SEO, thành thạo quảng cáo đa nền tảng, content chuẩn SEO và quản trị WordPress.",
+    "Portfolio of Truong Lam Kiet - final-year Digital Marketing student at Van Lang University. SEO intern focused on applied AI: agent workflows, automation and AI-assisted web design.",
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className={`${inter.variable} ${bricolage.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${bricolage.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-oat text-ink">
         <AuroraBackground />
         <ScrollProgress />

@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-pptx",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Builds the Portfolio-TruongLamKiet.pptx deck. Kept as its own package so pptxgenjs never lands in the Next.js site's dependencies.",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "pptxgenjs": "^3.12.0"
+  }
+}

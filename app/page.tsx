@@ -32,7 +32,7 @@ export default function Home() {
           <Achievements />
           <Cv />
           <Cta />
-          {/* Kết nối để cuối cùng: cuộn hết trang là thấy ngay dàn logo */}
+          {/* Connect đặt cuối: cuộn hết trang là thấy ngay dàn logo */}
           <Connect />
         </div>
       </main>

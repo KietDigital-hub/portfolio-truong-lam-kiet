@@ -56,12 +56,12 @@ export function About() {
         <Reveal>
           <SectionHeading
             dark
-            eyebrow="Mục tiêu nghề nghiệp"
+            eyebrow="Career goals"
             title={
               <>
-                Đi từ người học việc đến một
+                From learning the basics to a marketer
                 <br />
-                Digital Marketer triển khai được đầu-cuối.
+                who builds AI systems, end to end.
               </>
             }
           />
@@ -95,7 +95,7 @@ export function About() {
                     <h3 className="mt-3 text-xl font-black">{item.title}</h3>
                     <p className="mt-2 text-sm font-medium leading-relaxed text-ink">{item.blurb}</p>
                     <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-ink underline underline-offset-4">
-                      Xem thêm
+                      Read more
                     </span>
                   </button>
                 </div>
@@ -122,7 +122,7 @@ export function About() {
 
         <Reveal delay={0.1} className="mt-6">
           <div className="flex flex-wrap items-center gap-3 rounded-3xl border border-cream/20 bg-dark-2/70 px-8 py-5 text-sm text-cream/70 backdrop-blur-sm">
-            <span className="font-black uppercase tracking-[0.15em] text-cream">Ngoài công việc</span>
+            <span className="font-black uppercase tracking-[0.15em] text-cream">Outside work</span>
             {interests.map((interest) => (
               <span key={interest} className="rounded-full bg-cream/10 px-3 py-1">
                 {interest}
@@ -152,7 +152,7 @@ export function About() {
             >
               <button
                 onClick={() => setOpenIndex(null)}
-                aria-label="Đóng"
+                aria-label="Close"
                 className="absolute right-6 top-6 inline-flex h-9 w-9 items-center justify-center rounded-full bg-cream/10 text-cream hover:bg-cream/20"
               >
                 <X size={16} />

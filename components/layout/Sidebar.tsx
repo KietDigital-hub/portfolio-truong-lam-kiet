@@ -55,19 +55,19 @@ export function Sidebar() {
         >
           <div className="rounded-2xl border-[3px] border-ink bg-white p-5">
             <div className="text-lg font-black uppercase tracking-wide">
-              Kiệt<span className="text-lime">.</span>
+              Kiet<span className="text-lime">.</span>
             </div>
             <p className="mt-2 text-xs font-medium leading-relaxed text-ink">{profile.heroDescription}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-2 rounded-2xl border-[3px] border-ink bg-white p-4 text-center">
             <div>
-              <div className="text-xl font-black text-lime [-webkit-text-stroke:1px_var(--color-ink)]">3</div>
-              <div className="text-[10px] font-bold uppercase tracking-wide text-ink">Nền tảng Ads</div>
+              <div className="text-xl font-black text-lime [-webkit-text-stroke:1px_var(--color-ink)]">8</div>
+              <div className="text-[10px] font-bold uppercase tracking-wide text-ink">AI Tools</div>
             </div>
             <div>
-              <div className="text-xl font-black text-lime [-webkit-text-stroke:1px_var(--color-ink)]">1.000+</div>
-              <div className="text-[10px] font-bold uppercase tracking-wide text-ink">TikTok</div>
+              <div className="text-xl font-black text-lime [-webkit-text-stroke:1px_var(--color-ink)]">3</div>
+              <div className="text-[10px] font-bold uppercase tracking-wide text-ink">AI Agents</div>
             </div>
           </div>
 
@@ -96,7 +96,7 @@ export function Sidebar() {
             href="#contact"
             className="rounded-2xl bg-ink px-4 py-3 text-center text-sm font-bold text-oat transition-transform hover:-translate-y-0.5"
           >
-            Liên hệ ngay
+            Get in touch
           </Link>
         </motion.aside>
       )}

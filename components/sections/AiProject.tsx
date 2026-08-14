@@ -51,7 +51,7 @@ export function AiProject() {
                   <button
                     type="button"
                     onClick={() => setPlaying(true)}
-                    aria-label={`Phát video: ${aiProject.title}`}
+                    aria-label={`Play video: ${aiProject.title}`}
                     className="group absolute inset-0 h-full w-full cursor-pointer"
                   >
                     <Image
@@ -75,7 +75,7 @@ export function AiProject() {
                   <span className="text-sm font-black leading-none">Made with AI</span>
                 </div>
                 <div className="mt-1 text-[11px] font-semibold text-cream/70">
-                  Kênh {aiProject.channel}
+                  {aiProject.channel} channel
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@ export function AiProject() {
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-bold text-cream transition-colors hover:bg-dark-2"
               >
-                Xem trên YouTube
+                Watch on YouTube
                 <ExternalLink size={16} strokeWidth={2.4} />
               </a>
             </div>

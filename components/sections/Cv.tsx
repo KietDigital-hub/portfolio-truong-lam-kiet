@@ -19,13 +19,13 @@ export function Cv() {
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
-            eyebrow="Hồ sơ"
+            eyebrow="Resume"
             title={
               <>
-                CV <span className="text-lime [-webkit-text-stroke:2px_var(--color-ink)]">đầy đủ</span> của mình
+                My <span className="text-lime [-webkit-text-stroke:2px_var(--color-ink)]">full</span> CV
               </>
             }
-            description="Bản PDF mới nhất - xem trực tiếp ngay tại đây hoặc tải về."
+            description="The latest PDF - read it right here or download a copy."
           />
         </Reveal>
 
@@ -39,7 +39,7 @@ export function Cv() {
         >
           <Image
             src={CV_IMAGE}
-            alt="CV của Trương Lâm Kiệt - Digital Marketing"
+            alt="Truong Lam Kiet CV - Digital Marketing"
             width={1312}
             height={1855}
             sizes="(max-width: 768px) 100vw, 768px"
@@ -55,7 +55,7 @@ export function Cv() {
               download
               className="inline-flex items-center gap-2 rounded-full border-[3px] border-ink bg-lime px-6 py-3 text-sm font-bold text-ink transition-transform hover:-translate-y-0.5"
             >
-              <Download size={16} /> Tải CV (PDF)
+              <Download size={16} /> Download CV (PDF)
             </a>
             <a
               href={CV_PDF}
@@ -63,7 +63,7 @@ export function Cv() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border-[3px] border-ink bg-white px-6 py-3 text-sm font-bold text-ink transition-colors hover:bg-lime"
             >
-              <ExternalLink size={16} /> Mở bản PDF
+              <ExternalLink size={16} /> Open the PDF
             </a>
           </div>
         </Reveal>

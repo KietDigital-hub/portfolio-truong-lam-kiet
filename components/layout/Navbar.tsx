@@ -5,16 +5,16 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const leftLinks = [
-  { href: "#home", label: "Trang chủ" },
-  { href: "#about", label: "Mục tiêu" },
-  { href: "#skills", label: "Kỹ năng" },
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "Goals" },
+  { href: "#skills", label: "Skills" },
 ];
 
 const rightLinks = [
-  { href: "#experience", label: "Kinh nghiệm" },
+  { href: "#experience", label: "Experience" },
   { href: "#cv", label: "CV" },
-  { href: "#connect", label: "Kết nối" },
-  { href: "#contact", label: "Liên hệ" },
+  { href: "#connect", label: "Connect" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -49,10 +49,10 @@ export function Navbar() {
       {/* Mobile */}
       <nav className="flex items-center justify-between px-5 py-5 md:hidden">
         <Link href="#home" className="text-sm font-black uppercase tracking-widest">
-          Kiệt<span className="text-lime brightness-75">.</span>
+          Kiet<span className="text-lime brightness-75">.</span>
         </Link>
         <button
-          aria-label="Mở menu"
+          aria-label="Open menu"
           className="inline-flex items-center justify-center rounded-full border border-ink/20 bg-oat/70 p-2 backdrop-blur"
           onClick={() => setOpen((v) => !v)}
         >

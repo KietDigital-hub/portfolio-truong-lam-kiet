@@ -1,10 +1,35 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { skills, tools } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Chip } from "@/components/ui/Chip";
 import { Tilt3D } from "@/components/ui/Tilt3D";
+
+/**
+ * Bộ 10 công cụ xếp thành hình chữ "M" trên desktop (lưới 7 cột x 3 dòng).
+ * Cột 1 và 7 là hai nét dọc, (2,2)->(3,3) và (6,2)->(5,3) là hai nét chéo
+ * chụm xuống giữa:
+ *
+ *   X . . . . . X
+ *   X X . . . X X
+ *   X . X . X . X
+ *
+ * Các class phải viết nguyên chuỗi (không ghép động) để Tailwind quét ra được.
+ * Dưới lg thì bỏ toạ độ, rơi về lưới 2/3 cột thường cho mobile.
+ */
+const M_POSITIONS = [
+  "lg:col-start-1 lg:row-start-1",
+  "lg:col-start-7 lg:row-start-1",
+  "lg:col-start-1 lg:row-start-2",
+  "lg:col-start-2 lg:row-start-2",
+  "lg:col-start-6 lg:row-start-2",
+  "lg:col-start-7 lg:row-start-2",
+  "lg:col-start-1 lg:row-start-3",
+  "lg:col-start-3 lg:row-start-3",
+  "lg:col-start-5 lg:row-start-3",
+  "lg:col-start-7 lg:row-start-3",
+];
 
 export function Skills() {
   return (
@@ -26,18 +51,22 @@ export function Skills() {
           <Reveal>
             <SectionHeading
               dark
-              eyebrow="Kỹ năng & Công cụ"
-              title="Công cụ mình dùng để chạy một chiến dịch."
-              description="Kết hợp quảng cáo, nội dung, SEO và một bộ công cụ AI để triển khai chiến dịch từ đầu đến cuối."
+              eyebrow="Skills & Toolkit"
+              title="The AI stack I build with."
+              description="Agents, automation and AI-assisted design - the toolkit I use to run marketing work from idea to live."
             />
           </Reveal>
 
-          {/* Bộ công cụ: logo tách từ chính ảnh nền, ghép cạnh tên và mô tả */}
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {/* Bộ công cụ xếp hình chữ M - chỉ logo + tên, không mô tả */}
+          <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7 lg:gap-4">
             {tools.map((tool, i) => (
-              <Reveal key={tool.name} delay={(i % 3) * 0.06} className="h-full">
-                <div className="group flex h-full items-start gap-4 rounded-2xl border border-cream/12 bg-cream/[0.04] p-4 backdrop-blur-sm transition-colors duration-300 hover:border-lime/60 hover:bg-cream/[0.08]">
-                  <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl ring-1 ring-cream/15 transition-transform duration-300 group-hover:scale-105">
+              <Reveal
+                key={tool.name}
+                delay={(i % 4) * 0.07}
+                className={`h-full ${M_POSITIONS[i]}`}
+              >
+                <div className="group flex h-full flex-col items-center justify-center gap-3 rounded-2xl border border-cream/12 bg-cream/[0.04] px-3 py-5 text-center backdrop-blur-sm transition-colors duration-300 hover:border-lime/60 hover:bg-cream/[0.08]">
+                  <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl ring-1 ring-cream/15 transition-transform duration-300 group-hover:scale-110">
                     <Image
                       src={tool.image}
                       alt={tool.name}
@@ -46,22 +75,16 @@ export function Skills() {
                       className="object-cover"
                     />
                   </span>
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-sm font-black text-cream">{tool.name}</span>
-                      <span className="rounded-full border border-lime/40 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-lime">
-                        {tool.group}
-                      </span>
-                    </div>
-                    <p className="mt-1.5 text-[13px] leading-relaxed text-cream/65">{tool.text}</p>
-                  </div>
+                  <span className="text-[13px] font-black leading-tight text-cream">
+                    {tool.name}
+                  </span>
                 </div>
               </Reveal>
             ))}
           </div>
 
           {/* 6 nhóm kỹ năng */}
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {skills.map((skill, i) => (
               <Reveal key={skill.title} delay={(i % 3) * 0.08} className="h-full">
                 <Tilt3D className="h-full rounded-3xl">

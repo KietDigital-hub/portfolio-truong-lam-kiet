@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+# portfolio-pptx la package rieng (pptxgenjs), khong commit deps cua no
+/portfolio-pptx/node_modules
 /.pnp
 .pnp.*
 .yarn/*

@@ -36,13 +36,13 @@ export function Footer({ withSidebar = true }: { withSidebar?: boolean }) {
             href="/ket-noi"
             className="inline-flex items-center gap-2 rounded-full border border-cream/15 px-4 py-2 hover:border-lime hover:text-lime"
           >
-            <Link2 size={16} /> Tất cả kênh
+            <Link2 size={16} /> All channels
           </Link>
         </div>
       </div>
 
       <div className="mx-auto mt-10 max-w-6xl border-t border-cream/10 pt-6 text-xs text-cream/40">
-        © {new Date().getFullYear()} {profile.name}. Portfolio cá nhân.
+        © {new Date().getFullYear()} {profile.name}. Personal portfolio.
       </div>
     </footer>
   );

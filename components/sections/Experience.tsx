@@ -53,8 +53,8 @@ export function Experience() {
       <div ref={pinRef} style={{ height: `${scrollHeight}vh` }} className="relative">
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
           <div className="px-5 sm:px-8 lg:pl-80">
-            <span className="inline-flex items-center gap-2 rounded-full border border-cream/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cream/60">
-              Kinh nghiệm làm việc
+            <span className="inline-flex items-center gap-2 rounded-full border-2 border-lime/70 bg-lime/10 px-4 py-1.5 font-display text-xs font-black uppercase tracking-[0.2em] text-lime">
+              Work experience
             </span>
           </div>
 
@@ -71,18 +71,19 @@ export function Experience() {
                     className="flex w-[85vw] shrink-0 flex-col justify-center sm:w-[420px]"
                   >
                     <h3 className="text-4xl font-black leading-[1.1] sm:text-5xl">
-                      Ba tháng
+                      Three months
                       <br />
-                      làm SEO thật, tại
+                      of real SEO, at a
                       <br />
-                      <span className="text-lime">doanh nghiệp thật.</span>
+                      <span className="text-lime">real company.</span>
                     </h3>
-                    <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/60">
-                      Không phải bài tập trên lớp - có deadline, có KPI tuần và có người duyệt.
-                      Kéo/cuộn để xem từng phần việc mình phụ trách.
+                    <p className="mt-6 max-w-md font-display text-lg font-black leading-[1.35] text-cream sm:text-xl">
+                      Not a classroom exercise - <span className="text-lime">real deadlines</span>,{" "}
+                      <span className="text-lime">weekly KPIs</span>, and someone reviewing every
+                      deliverable.
                     </p>
-                    <span className="mt-8 hidden items-center gap-2 text-xs font-bold uppercase tracking-widest text-cream/40 sm:flex">
-                      Cuộn để xem tiếp <ArrowUpRight size={14} className="rotate-90" />
+                    <span className="mt-7 hidden items-center gap-2 font-display text-xs font-black uppercase tracking-[0.2em] text-lime sm:flex">
+                      Scroll to see what I owned <ArrowUpRight size={14} className="rotate-90" />
                     </span>
                   </div>
                 );
@@ -103,11 +104,11 @@ export function Experience() {
                         className="object-cover opacity-90"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-dark-2 to-transparent" />
-                      <span className="absolute left-6 top-5 rounded-full bg-ink/70 px-3 py-1 text-xs font-black text-cream/70 backdrop-blur">
+                      <span className="absolute left-6 top-5 rounded-full bg-ink/80 px-3 py-1 font-display text-xs font-black text-lime backdrop-blur">
                         00
                       </span>
                       <span className="absolute right-6 top-5 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink">
-                        Đang diễn ra
+                        In progress
                       </span>
                     </div>
 
@@ -125,13 +126,13 @@ export function Experience() {
                         {experience.company}
                         <ArrowUpRight size={14} strokeWidth={2.6} />
                       </a>
-                      <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-cream/40">
+                      <p className="mt-1 font-display text-xs font-black uppercase tracking-[0.14em] text-cream/70">
                         {experience.period}
                       </p>
 
                       <div className="mt-auto border-t border-cream/10 pt-5">
-                        <span className="text-[10px] font-black uppercase tracking-[0.22em] text-cream/40">
-                          KPI được giao
+                        <span className="font-display text-[11px] font-black uppercase tracking-[0.22em] text-lime">
+                          KPIs assigned
                         </span>
                         <div className="mt-3 flex flex-wrap gap-2">
                           {experience.kpis.map((kpi) => (
@@ -156,17 +157,17 @@ export function Experience() {
                     className="flex w-[85vw] shrink-0 flex-col justify-center rounded-3xl border border-lime/30 bg-dark-2 p-8 sm:w-[420px] sm:p-10"
                   >
                     <Quote size={32} className="text-lime" strokeWidth={2.4} />
-                    <p className="mt-5 text-lg font-black leading-snug text-cream sm:text-xl">
+                    <p className="mt-5 font-display text-xl font-black leading-[1.3] text-cream sm:text-2xl">
                       {experienceTakeaway}
                     </p>
-                    <span className="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-cream/40">
-                      Điều rút ra sau 3 tháng
+                    <span className="mt-6 font-display text-xs font-black uppercase tracking-[0.2em] text-lime">
+                      What the internship taught me
                     </span>
                     <Link
                       href="#contact"
                       className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-lime px-5 py-3 text-sm font-bold text-ink transition-transform hover:-translate-y-0.5"
                     >
-                      Liên hệ với mình
+                      Get in touch
                       <ArrowUpRight size={16} strokeWidth={2.6} />
                     </Link>
                   </div>
@@ -188,7 +189,7 @@ export function Experience() {
                       className="object-cover opacity-90"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-2 to-transparent" />
-                    <span className="absolute left-6 top-5 rounded-full bg-ink/70 px-3 py-1 text-xs font-black text-cream/70 backdrop-blur">
+                    <span className="absolute left-6 top-5 rounded-full bg-ink/80 px-3 py-1 font-display text-xs font-black text-lime backdrop-blur">
                       {group.index}
                     </span>
                     <span className="absolute right-6 top-5 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink">
@@ -197,11 +198,11 @@ export function Experience() {
                   </div>
 
                   <div className="flex flex-1 flex-col p-8 pt-5">
-                    <h3 className="text-xl font-black leading-snug">{group.title}</h3>
+                    <h3 className="font-display text-2xl font-black leading-tight tracking-tight text-cream">{group.title}</h3>
 
                     <ul className="mt-5 space-y-3">
                       {group.points.map((point) => (
-                        <li key={point} className="flex gap-2.5 text-sm leading-relaxed text-cream/75">
+                        <li key={point} className="flex gap-2.5 text-sm font-semibold leading-relaxed text-cream/90">
                           <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-lime" />
                           <span>{point}</span>
                         </li>

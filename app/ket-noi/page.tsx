@@ -9,9 +9,9 @@ import { profile } from "@/lib/profile";
 import { socials } from "@/lib/socials";
 
 export const metadata: Metadata = {
-  title: "Kết nối · Trương Lâm Kiệt",
+  title: "Connect · Truong Lam Kiet",
   description:
-    "Toàn bộ tài khoản mạng xã hội của Trương Lâm Kiệt: Facebook, TikTok, Instagram, X, LinkedIn, GitHub, Reddit, Discord, Spotify và PayPal.",
+    "Every social account of Truong Lam Kiet in one place: Behance, Facebook, TikTok, Instagram, X, LinkedIn, GitHub, Reddit, Discord, Spotify and PayPal.",
 };
 
 export default function KetNoiPage() {
@@ -34,7 +34,7 @@ export default function KetNoiPage() {
                   href="/"
                   className="inline-flex items-center gap-2 rounded-full border-[3px] border-ink bg-white px-4 py-2 text-sm font-bold text-ink transition-colors hover:bg-lime"
                 >
-                  <ArrowLeft size={16} /> Trang chủ
+                  <ArrowLeft size={16} /> Home
                 </Link>
                 <span className="text-sm font-black uppercase tracking-widest">
                   {profile.name}
@@ -46,13 +46,13 @@ export default function KetNoiPage() {
             <div className="mt-14">
               <Reveal>
                 <SectionHeading
-                  eyebrow="Kết nối"
+                  eyebrow="Connect"
                   title={
                     <>
-                      Tìm mình ở <span className="text-lime [-webkit-text-stroke:2px_var(--color-ink)]">mọi nơi</span>
+                      Find me <span className="text-lime [-webkit-text-stroke:2px_var(--color-ink)]">everywhere</span>
                     </>
                   }
-                  description="Tất cả tài khoản chính chủ của mình gom về một chỗ - bấm vào logo là mở thẳng trang tương ứng. Nhanh nhất vẫn là nhắn Facebook hoặc gửi email."
+                  description="All of my real accounts in one place - tap a logo to open that channel. The fastest way to reach me is still Facebook or email."
                 />
               </Reveal>
 
@@ -81,24 +81,24 @@ export default function KetNoiPage() {
             <Reveal>
               <div className="mt-16 rounded-3xl border-[3px] border-ink bg-white p-8 text-center sm:p-12">
                 <h3 className="text-3xl font-black leading-[1.1] sm:text-4xl">
-                  {socials.length} kênh - cùng một người
+                  {socials.length} channels - one person
                 </h3>
                 <p className="mx-auto mt-4 max-w-xl text-base font-medium leading-relaxed text-ink">
-                  Mỗi kênh là một mảnh của cùng một câu chuyện: học Digital Marketing, làm SEO thật,
-                  và tự tay dựng nội dung mỗi ngày. Nếu thấy hợp, đừng ngại nhắn cho mình.
+                  Every channel is a piece of the same story: studying Digital Marketing, doing real
+                  SEO work, and building with AI every day. If it looks like a fit, message me.
                 </p>
                 <div className="mt-6 flex flex-wrap justify-center gap-3">
                   <Link
                     href="/#experience"
                     className="rounded-full border-[3px] border-ink bg-lime px-6 py-3 text-sm font-bold text-ink transition-transform hover:-translate-y-0.5"
                   >
-                    Xem kinh nghiệm
+                    See my experience
                   </Link>
                   <Link
                     href="/#contact"
                     className="rounded-full border-[3px] border-ink bg-white px-6 py-3 text-sm font-bold text-ink transition-colors hover:bg-lime"
                   >
-                    Liên hệ ngay
+                    Get in touch
                   </Link>
                 </div>
               </div>

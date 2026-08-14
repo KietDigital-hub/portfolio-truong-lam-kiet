@@ -15,6 +15,8 @@ Website portfolio cá nhân cho **Trương Lâm Kiệt** — sinh viên năm cu�
 
 Phong cách lấy cảm hứng trực tiếp từ **`https://heynesh.com`** (site thật của một freelancer Webflow, KHÔNG phải ảnh tĩnh) — đã xác nhận qua devtools rằng họ dùng Webflow + GSAP (ScrollTrigger, SplitText, DrawSVGPlugin) + Lenis + Swiper. Site của mình cũng build bằng đúng các công nghệ đó (bản JS/npm), giữ layout/hiệu ứng nhưng đổi toàn bộ nội dung cho hồ sơ sinh viên. Ngoài ra thư mục gốc dự án còn có 39 ảnh reference tĩnh (`00_homepage_full.jpg` → `38_about_card_7.jpg`) chụp cùng site đó — dùng khi cần xem chi tiết layout mà không cần mở lại site thật.
 
+**NGÔN NGỮ SITE: TIẾNG ANH (chốt 14/8/2026)** - toàn bộ nội dung hiển thị trên web + file PPTX đã chuyển sang tiếng Anh (`<html lang="en">`). Mọi nội dung mới cũng viết bằng tiếng Anh. Comment trong code vẫn giữ tiếng Việt (ghi chú nội bộ của Kiệt). Vì không còn render text tiếng Việt, các bug về glyph/dấu ở mục "Bài học" #1, #2, #9 hiện KHÔNG còn ảnh hưởng - nhưng vẫn giữ lại làm tư liệu, nếu sau này có bản tiếng Việt thì đọc lại trước khi đổi font.
+
 **Lưu ý quan trọng — KHÔNG bịa nội dung**: đây là portfolio xin việc của sinh viên, không phải trang bán dịch vụ freelancer. Toàn bộ số liệu/dự án/kỹ năng lấy từ CV thật (xem mục "Nội dung cá nhân"). KHÔNG bịa thêm số năm kinh nghiệm, số khách hàng, bảng giá dịch vụ, hay testimonial giả. Ảnh minh họa trong project card (xem Tech Stack) là ảnh Unsplash theo chủ đề, KHÔNG phải screenshot dự án thật — nếu sau này có ảnh thật thì thay thế ngay.
 
 ## Trạng thái triển khai (deployed)
@@ -37,14 +39,20 @@ Phong cách lấy cảm hứng trực tiếp từ **`https://heynesh.com`** (sit
 
 ## Lệnh thường dùng
 
-Code thực tế nằm trong thư mục con **`site/`** (vì `create-next-app` không cho scaffold vào thư mục đã có sẵn ảnh reference + CLAUDE.md gốc).
+Code Next.js nằm ngay **thư mục gốc của repo** (`d:\pofofilio`) - `app/`, `components/`, `lib/`, `public/`. KHÔNG có thư mục `site/`, đừng `cd site`.
 
 ```bash
-cd site
-npm run dev              # dev server, mặc định port 3000 (session trước hay dùng -p 3457)
+npm run dev -- -p 3457    # dev server (port 3457 hay dùng cho screenshot)
 npm run build             # build production — LUÔN chạy trước khi báo hoàn thành
 npm run lint
 git add -A && git commit -m "..." && git push   # đẩy lên GitHub → Vercel tự deploy
+```
+
+Deck PPTX là **package npm riêng** trong `portfolio-pptx/` (có `package.json` riêng để `pptxgenjs`
+không lọt vào dependency của site). `portfolio-pptx/node_modules` đã được gitignore.
+
+```bash
+cd portfolio-pptx && npm install && npm run build   # ghi ra Portfolio-TruongLamKiet.pptx (17 slide)
 ```
 
 ## Cấu trúc thư mục (thực tế)
@@ -101,8 +109,8 @@ Nguyên tắc: 2 nền + 1 accent, dùng accent có chủ đích (CTA, số li�
 - **Hero**: chữ "KIET" (không dấu, xem "Bài học") khổng lồ màu lime làm nền, ảnh chân dung cutout đè giữa, headline 3 dòng đè lên phần dưới ảnh, 2 badge số liệu + 1 panel tag kỹ năng nổi kiểu glass (chỉ desktop, `hidden lg:block`), CTA + mô tả hàng dưới, metric strip 4 cột cuối section. SplitText animate headline khi mount.
 - **Sidebar** (thay navbar sau khi qua Hero): logo/mô tả ngắn, 2 stat nhỏ, nav list scroll-spy (active = nền lime), email, nút "Liên hệ ngay". Chỉ desktop (`hidden lg:flex`).
 - **About (Mục tiêu)**: toàn bộ nội dung nằm trong 1 panel riêng - nền là ảnh `public/images/nen.png` trải ở phần đầu rồi tan dần vào nền đen, viền `border-[3px] border-lime`. Đây là section DUY NHẤT dùng ảnh nền này; phần còn lại của site giữ nền oat sáng. Card timeline/học vấn để nền sáng đục (`bg-oat-card/92`) cho nổi trên nền tối. Bên trong: timeline 4 mốc thật (2023 nhập học → 2025 làm Leader 2 dự án → 2026 thực tập TinHolding → 2026 tốt nghiệp) xếp so le trái/phải, nối bằng SVG connector, click "Xem thêm" mở modal tối chi tiết (AnimatePresence).
-- **Experience** (`sections/Experience.tsx`, `#experience`): khối cuộn ngang pinned-scroll (sticky + `useScroll`/`useTransform` translateX) - Kiệt thích hiệu ứng này nên GIỮ NGUYÊN kiểu thiết kế, chỉ đổi nội dung. Slide: intro → card vị trí (role + KPI) → 3 nhóm công việc (`experienceGroups`) → card "Điều rút ra" + CTA. Section Projects/2 dự án học phần đã bị xóa hẳn (mảng `projects` cũng đã gỡ khỏi `lib/profile.ts`), đừng thêm lại.
-- **Skills**: nằm trong panel riêng nền `public/images/nen2.png` + viền lime (giống panel Mục tiêu). Bên trong có lưới **10 công cụ** (`tools` trong `lib/profile.ts`): logo được CẮT TỪ CHÍNH ảnh nen2.png bằng script PIL vào `public/images/tools/*.png` (256x256), ghép cạnh tên + mô tả. Muốn thêm/sửa công cụ thì cắt thêm ảnh theo cùng cách rồi thêm vào mảng `tools`.
+- **Experience** (`sections/Experience.tsx`, `#experience`): khối cuộn ngang pinned-scroll (sticky + `useScroll`/`useTransform` translateX) - Kiệt thích hiệu ứng này nên GIỮ NGUYÊN kiểu thiết kế, chỉ đổi nội dung. Slide: intro → card vị trí (role + KPI) → 3 nhóm công việc (`experienceGroups`) → card "Điều rút ra" + CTA. **Typography đã được làm đậm lại 14/8/2026**: Kiệt phản hồi là chữ mảnh màu xám (`text-cream/60`, font Inter) nhìn "rất giống AI"/generic. Giờ đoạn intro, nhãn KPI, label và takeaway đều dùng `font-display` (Bricolage) + `font-black` + màu nhấn lime cho cụm từ khoá; badge index (01/02/03) và eyebrow "Work experience" cũng đổi sang lime. Giữ nguyên nguyên tắc này khi thêm text mới vào section - đừng quay lại chữ mảnh xám. Section Projects/2 dự án học phần đã bị xóa hẳn (mảng `projects` cũng đã gỡ khỏi `lib/profile.ts`), đừng thêm lại.
+- **Skills**: nằm trong panel riêng nền `public/images/nen2.png` + viền lime (giống panel Mục tiêu). Bên trong có **10 công cụ** (`tools` trong `lib/profile.ts`) xếp thành **hình chữ "M"** trên desktop: lưới `lg:grid-cols-7` x 3 dòng, toạ độ cứng trong mảng `M_POSITIONS` ở đầu `components/sections/Skills.tsx` - cột 1 và 7 là hai nét dọc, (2,2)→(3,3) và (6,2)→(5,3) là hai nét chéo chụm xuống giữa. Card chỉ có **logo + tên**, KHÔNG có mô tả (yêu cầu của Kiệt 14/8/2026 - trước đó có mô tả nhìn rối). Dưới `lg` thì bỏ toạ độ, rơi về lưới 2/3 cột thường. Logo được CẮT TỪ CHÍNH ảnh nen2.png bằng script PIL vào `public/images/tools/*.png` (256x256). Thêm công cụ thì phải cắt ảnh theo cùng cách VÀ thêm 1 toạ độ vào `M_POSITIONS` (nếu không thêm, tool mới sẽ rơi vào ô grid tự động và làm vỡ hình chữ M). Các class toạ độ phải viết nguyên chuỗi, không ghép động, để Tailwind quét ra được.
 - **FAQ**: lưới 2 cột, chữ cái "K" khổng lồ mờ làm nền trang trí.
 - **Divider**: SVG đường cong vẽ tay, tự "vẽ" (`pathLength` animate) khi scroll tới, đặt giữa Hero và About.
 - **Testimonial**: KHÔNG có — không có quote thật nên bỏ hẳn, không bịa.
@@ -130,6 +138,16 @@ Nguyên tắc khi thêm animation kiểu này: luôn tôn trọng `prefers-reduc
 9. **Chữ nền khổng lồ ở Hero để KHÔNG DẤU** ("KIET" thay vì "KIỆT") — dấu nặng của "Ệ" ở size cực lớn (`text-[38vw]`) tạo một chấm vàng lơ lửng đè lên ảnh/áo trông như lỗi. Tên đầy đủ có dấu vẫn hiển thị đầy đủ ở mọi chỗ khác (nav, footer, sidebar).
 10. **`git config` không được set global** — dùng `git -c user.name=... -c user.email=... commit` để override tại chỗ khi cần commit mà máy chưa cấu hình identity.
 
+## Định hướng định vị: ĐÁNH MẠNH VỀ KỸ NĂNG AI (chốt 14/8/2026)
+
+Điểm khác biệt chính của hồ sơ Kiệt so với sinh viên Digital Marketing khác là **năng lực ứng dụng AI vào công việc marketing**. Mọi nội dung mới (trên site, trên Behance, trong CV, trong mô tả dự án) phải đặt AI ở vị trí nổi bật:
+
+- Nhóm kỹ năng "AI Tools" là nhóm được ưu tiên hiển thị trước, không xếp chung hàng như một kỹ năng phụ.
+- Khi mô tả một công việc, nêu rõ AI đã tham gia ở khâu nào (ý tưởng, kịch bản, hình ảnh, hậu kỳ, tự động hóa workflow) thay vì chỉ liệt kê tên công cụ.
+- Bộ công cụ AI thật đang dùng: ChatGPT, Claude, Claude Code, n8n, Seedance, Topaz, CapCut. Đã có trong mảng `tools` và `skills` của `lib/profile.ts`.
+- Dự án AI thật đang trưng bày: video meme người que kênh "Kaz AI" (mảng `aiProject` trong `lib/profile.ts`, section `#ai-project`).
+- **Vẫn giữ nguyên tắc không bịa**: chỉ nói về công cụ và dự án Kiệt thật sự đã làm. Đánh mạnh về AI nghĩa là kể kỹ và đặt ở vị trí nổi bật hơn, KHÔNG phải thêm kỹ năng/dự án AI không có thật.
+
 ## Nội dung cá nhân — dữ liệu thật (từ CV, cập nhật 21/7/2026)
 
 Toàn bộ nội dung dưới đây đã đưa vào `lib/profile.ts`. Đây là bản ghi lại để tham khảo nhanh không cần mở code.
@@ -151,13 +169,29 @@ Toàn bộ nội dung dưới đây đã đưa vào `lib/profile.ts`. Đây là 
 - **Thực tập sinh SEO (TTS SEO)** tại **TinHolding** (tinholding.com), 21/5/2026-21/8/2026: thiết kế website công ty, quản trị WordPress, đi backlink (SEO offpage), viết content chuẩn SEO.
 
 ### Stat thật dùng cho hero/badge (KHÔNG bịa số khác)
-- `3` nền tảng Ads đã thực chiến (Facebook, Google, TikTok)
-- `1.000+` TikTok followers tự xây dựng
-- `2` dự án đảm nhận vai trò Leader
+Bộ stat cũ (`3` nền tảng Ads, `1.000+` TikTok followers, `2` dự án Leader) đã bị **gỡ khỏi hero,
+metric strip, Sidebar và PPTX** ngày 14/8/2026 theo yêu cầu của Kiệt - lý do: định vị hồ sơ giờ
+đánh mạnh về AI, không phải về ads/followers. Bộ stat đang dùng (`heroStats` + `metrics` trong
+`lib/profile.ts`):
+- `8` công cụ AI dùng hằng ngày (đếm đúng số tool AI trong mảng `tools`: ChatGPT, Claude, Claude Code, OpenClaw, n8n, Magnific, Seedance, CapCut)
+- `3` nền tảng agent AI đang build trên đó (Claude Code, OpenClaw, n8n)
+- `1` kênh video AI đã ship (Kaz AI)
 - `2026` năm tốt nghiệp — ĐH Văn Lang
 
+Kỹ năng ads và cột mốc 1.000 followers TikTok VẪN là thật và vẫn còn trên site, nhưng đã bị
+hạ xuống: ads là nhóm kỹ năng cuối cùng, followers chỉ còn là một gạch đầu dòng trong section
+Achievements (không còn là con số lớn nổi bật). Đừng đưa chúng trở lại làm stat chính.
+
 ### Kỹ năng & công cụ
-Digital Advertising (Facebook/Google/TikTok Ads cơ bản) · SEO (content chuẩn SEO, backlink, WordPress) · AI Tools (ChatGPT, Claude, Midjourney) · Website Management (WordPress) · Social Media Management (Fanpage, Content Calendar) · Content & Design (Canva, CapCut).
+Bộ 6 nhóm kỹ năng hiện tại (thứ tự hiển thị = thứ tự ưu tiên, AI trước):
+1. **AI Agents & Orchestration** - Claude Code, OpenClaw, agent workflows, prompt design
+2. **AI-Assisted Web Design** - dựng website production bằng Claude Code: layout, UI/UX, Next.js, responsive (chính site này là ví dụ)
+3. **Workflow Automation** - n8n, webhook, API integration, auto-reporting
+4. **AI Content & Creative** - ChatGPT, Claude, Seedance, Magnific, CapCut
+5. **SEO** - SEO content, keyword research, backlink, WordPress
+6. **Digital Advertising** - Facebook/Google/TikTok Ads, budgeting (nhóm cuối, đã hạ ưu tiên)
+
+(Nguồn chuẩn là mảng `skills` và `tools` trong `lib/profile.ts` - nếu lệch thì tin code, rồi cập nhật lại đoạn này.)
 
 ### Dự án & Hoạt động học tập (KHÔNG hiển thị trên site - Kiệt đã yêu cầu gỡ, giữ lại đây để tham khảo)
 1. **Đề án Marketing Kỹ thuật số** (10/11/2025-30/3/2026): lập kế hoạch, điều phối nhóm, Landing Page, quản lý Multi-channel Ads (Facebook/Google/TikTok), content đa kênh, Content Calendar.
