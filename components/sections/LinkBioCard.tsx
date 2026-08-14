@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { linkBio, socials } from "@/lib/socials";
+import { useT } from "@/lib/i18n";
 
 /**
  * Card link-in-bio - phần tử TO NHẤT của khu Kết nối.
@@ -10,6 +11,7 @@ import { linkBio, socials } from "@/lib/socials";
  */
 export function LinkBioCard() {
   const reduced = useReducedMotion();
+  const t = useT().connect;
 
   return (
     <motion.a
@@ -35,18 +37,17 @@ export function LinkBioCard() {
       <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border-[3px] border-ink bg-white px-4 py-1.5 text-xs font-black uppercase tracking-widest text-ink">
-            Link in bio
+            {t.linkBioBadge}
           </span>
 
-          <h3 className="mt-6 text-4xl font-black leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl">
-            All my links
+          <h3 className="mt-6 text-4xl font-black leading-[1.08] tracking-tight text-ink sm:text-6xl lg:text-7xl">
+            {t.linkBioTitle[0]}
             <br />
-            in one place
+            {t.linkBioTitle[1]}
           </h3>
 
           <p className="mt-5 max-w-lg text-base font-bold leading-relaxed text-ink sm:text-lg">
-            One hub with all {socials.length} channels - social, portfolio, code and contact.
-            Start here if you only open one link.
+            {t.linkBioText.replace("{count}", String(socials.length))}
           </p>
         </div>
 

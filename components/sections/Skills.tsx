@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
-import { skills, tools } from "@/lib/profile";
+import { tools } from "@/lib/profile";
+import { useT } from "@/lib/i18n";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IconBadge } from "@/components/ui/IconBadge";
@@ -32,6 +35,8 @@ const M_POSITIONS = [
 ];
 
 export function Skills() {
+  const t = useT();
+
   return (
     <section id="skills" className="px-5 py-24 sm:px-8">
       <div className="mx-auto max-w-6xl">
@@ -51,9 +56,9 @@ export function Skills() {
           <Reveal>
             <SectionHeading
               dark
-              eyebrow="Skills & Toolkit"
-              title="The AI stack I build with."
-              description="Agents, automation and AI-assisted design - the toolkit I use to run marketing work from idea to live."
+              eyebrow={t.skillsSection.eyebrow}
+              title={t.skillsSection.title}
+              description={t.skillsSection.description}
             />
           </Reveal>
 
@@ -85,7 +90,7 @@ export function Skills() {
 
           {/* 6 nhóm kỹ năng */}
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {skills.map((skill, i) => (
+            {t.skills.map((skill, i) => (
               <Reveal key={skill.title} delay={(i % 3) * 0.08} className="h-full">
                 <Tilt3D className="h-full rounded-3xl">
                   <div className="flex h-full flex-col rounded-3xl border-[3px] border-ink bg-white p-7 shadow-xl">

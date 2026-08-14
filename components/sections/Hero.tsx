@@ -1,23 +1,18 @@
 ﻿"use client";
 
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Sparkles, Target, Rocket, PenTool, BarChart3 } from "lucide-react";
-import { profile, metrics } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { gsap, SplitText } from "@/lib/gsap";
+import { useT } from "@/lib/i18n";
 
-const traits = [
-  { icon: Sparkles, label: "AI-first" },
-  { icon: Target, label: "Agents" },
-  { icon: Rocket, label: "Automation" },
-  { icon: PenTool, label: "AI Web Design" },
-  { icon: BarChart3, label: "Data" },
-];
+const TRAIT_ICONS = [Sparkles, Target, Rocket, PenTool, BarChart3];
 
 export function Hero() {
+  const t = useT();
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const { scrollYProgress } = useScroll({
@@ -50,7 +45,9 @@ export function Hero() {
       ctx.revert();
       split.revert();
     };
-  }, []);
+    // Đổi ngôn ngữ => headline đổi chữ, phải tách dòng lại từ đầu.
+    // <h1> có key={lang} nên React thay hẳn node cũ (vốn đã bị GSAP chèn wrapper) thay vì vá lại.
+  }, [t]);
 
   return (
     <section
@@ -76,16 +73,20 @@ export function Hero() {
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
               className="rounded-2xl bg-ink/75 px-5 py-3 text-cream shadow-lg backdrop-blur-md"
             >
-              <div className="text-2xl font-black leading-none text-lime">8</div>
-              <div className="mt-1 text-xs font-semibold">AI tools in daily use</div>
+              <div className="text-2xl font-black leading-none text-lime">
+                {t.heroStats[0].value}
+              </div>
+              <div className="mt-1 text-xs font-semibold">{t.hero.badgeTools}</div>
             </motion.div>
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
               className="rounded-2xl bg-ink/75 px-5 py-3 text-cream shadow-lg backdrop-blur-md"
             >
-              <div className="text-2xl font-black leading-none text-lime">3</div>
-              <div className="mt-1 text-xs font-semibold">AI agent platforms</div>
+              <div className="text-2xl font-black leading-none text-lime">
+                {t.heroStats[1].value}
+              </div>
+              <div className="mt-1 text-xs font-semibold">{t.hero.badgeAgents}</div>
             </motion.div>
           </div>
 
@@ -94,12 +95,15 @@ export function Hero() {
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
             className="flex flex-col gap-2.5 rounded-2xl bg-ink/60 px-6 py-5 shadow-lg backdrop-blur-md"
           >
-            {traits.map((trait) => (
-              <div key={trait.label} className="flex items-center gap-3">
-                <trait.icon size={16} className="text-lime" strokeWidth={2.6} />
-                <span className="text-sm font-bold text-cream">{trait.label}</span>
-              </div>
-            ))}
+            {t.hero.traits.map((label, i) => {
+              const Icon = TRAIT_ICONS[i] ?? Sparkles;
+              return (
+                <div key={label} className="flex items-center gap-3">
+                  <Icon size={16} className="text-lime" strokeWidth={2.6} />
+                  <span className="text-sm font-bold text-cream">{label}</span>
+                </div>
+              );
+            })}
           </motion.div>
         </div>
       </div>
@@ -111,7 +115,7 @@ export function Hero() {
       >
         <Image
           src="/images/portrait-cutout.png"
-          alt={profile.name}
+          alt={t.profile.name}
           width={1024}
           height={832}
           priority
@@ -123,14 +127,18 @@ export function Hero() {
       <div className="relative z-20 -mt-4 sm:-mt-14">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <h1
+            key={t.htmlLang}
             ref={headlineRef}
-            className="text-center text-5xl font-black leading-[1.04] tracking-tight text-ink sm:text-left sm:text-6xl lg:text-7xl"
+            className="text-center text-5xl font-black leading-[1.06] tracking-tight text-ink sm:text-left sm:text-6xl lg:text-7xl"
           >
-            Digital Marketing,
-            <br />
-            powered by AI.
-            <br />
-            Built end to end.
+            {/* Fragment (không phải <span>) để DOM y hệt bản chữ tĩnh cũ -
+                SplitText mask="lines" tính sai chiều cao dòng nếu bị bọc thêm inline element. */}
+            {t.hero.headline.map((line, i) => (
+              <Fragment key={line}>
+                {i > 0 && <br />}
+                {line}
+              </Fragment>
+            ))}
           </h1>
         </div>
       </div>
@@ -139,26 +147,26 @@ export function Hero() {
       <div className="relative z-20 mx-auto mt-8 grid w-full max-w-6xl items-end gap-8 px-5 pb-10 sm:px-8 lg:grid-cols-[1fr_auto_1fr]">
         <Reveal delay={0.5}>
           <p className="hidden text-sm leading-relaxed text-ink-soft lg:block">
-            Digital Marketing student.
+            {t.hero.caption[0]}
             <br />
-            That&apos;s Kiet.
+            {t.hero.caption[1]}
           </p>
         </Reveal>
 
         <Reveal delay={0.6}>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button href="#contact" variant="primary">
-              Get in touch
+              {t.hero.ctaContact}
             </Button>
             <Button href="#skills" variant="primary">
-              See my AI stack
+              {t.hero.ctaSkills}
             </Button>
           </div>
         </Reveal>
 
         <Reveal delay={0.7}>
           <p className="text-center text-sm leading-relaxed text-ink-soft lg:text-right">
-            {profile.heroDescription}
+            {t.profile.heroDescription}
           </p>
         </Reveal>
       </div>
@@ -167,7 +175,7 @@ export function Hero() {
       <div className="relative z-20 mx-auto w-full max-w-6xl px-5 pb-14 sm:px-8">
         <Reveal delay={0.2}>
           <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border-2 border-ink bg-ink sm:grid-cols-4">
-            {metrics.map((m) => (
+            {t.metrics.map((m) => (
               <div key={m.label} className="bg-white px-6 py-6">
                 <div className="text-3xl font-black leading-none">
                   {m.value}

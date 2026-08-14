@@ -5,23 +5,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Briefcase, CheckCircle2, ArrowUpRight, Quote } from "lucide-react";
-import { experience, experienceGroups, experienceTakeaway } from "@/lib/profile";
 import { Chip } from "@/components/ui/Chip";
+import { useT } from "@/lib/i18n";
+import type { SiteContent } from "@/lib/content/en";
 
 type Slide =
   | { kind: "intro" }
   | { kind: "role" }
-  | { kind: "group"; data: (typeof experienceGroups)[number] }
+  | { kind: "group"; data: SiteContent["experience"]["groups"][number] }
   | { kind: "takeaway" };
 
-const slides: Slide[] = [
-  { kind: "intro" },
-  { kind: "role" },
-  ...experienceGroups.map((g) => ({ kind: "group" as const, data: g })),
-  { kind: "takeaway" },
-];
-
 export function Experience() {
+  const t = useT();
+  const experience = t.experience;
+  const slides: Slide[] = [
+    { kind: "intro" },
+    { kind: "role" },
+    ...experience.groups.map((g) => ({ kind: "group" as const, data: g })),
+    { kind: "takeaway" },
+  ];
+
   const trackRef = useRef<HTMLDivElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const [trackWidth, setTrackWidth] = useState(0);
@@ -35,7 +38,8 @@ export function Experience() {
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, []);
+    // đo lại khi đổi ngôn ngữ vì chiều dài nội dung trong track có thể thay đổi
+  }, [t]);
 
   const { scrollYProgress } = useScroll({
     target: pinRef,
@@ -54,7 +58,7 @@ export function Experience() {
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
           <div className="px-5 sm:px-8 lg:pl-80">
             <span className="inline-flex items-center gap-2 rounded-full border-2 border-lime/70 bg-lime/10 px-4 py-1.5 font-display text-xs font-black uppercase tracking-[0.2em] text-lime">
-              Work experience
+              {experience.eyebrow}
             </span>
           </div>
 
@@ -71,19 +75,21 @@ export function Experience() {
                     className="flex w-[85vw] shrink-0 flex-col justify-center sm:w-[420px]"
                   >
                     <h3 className="text-4xl font-black leading-[1.1] sm:text-5xl">
-                      Three months
+                      {experience.introTitle[0]}
                       <br />
-                      of real SEO, at a
+                      {experience.introTitle[1]}
                       <br />
-                      <span className="text-lime">real company.</span>
+                      <span className="text-lime">{experience.introTitle[2]}</span>
                     </h3>
                     <p className="mt-6 max-w-md font-display text-lg font-black leading-[1.35] text-cream sm:text-xl">
-                      Not a classroom exercise - <span className="text-lime">real deadlines</span>,{" "}
-                      <span className="text-lime">weekly KPIs</span>, and someone reviewing every
-                      deliverable.
+                      {experience.introLead}
+                      <span className="text-lime">{experience.introHighlight1}</span>
+                      {experience.introMid}
+                      <span className="text-lime">{experience.introHighlight2}</span>
+                      {experience.introTail}
                     </p>
                     <span className="mt-7 hidden items-center gap-2 font-display text-xs font-black uppercase tracking-[0.2em] text-lime sm:flex">
-                      Scroll to see what I owned <ArrowUpRight size={14} className="rotate-90" />
+                      {experience.scrollHint} <ArrowUpRight size={14} className="rotate-90" />
                     </span>
                   </div>
                 );
@@ -108,7 +114,7 @@ export function Experience() {
                         00
                       </span>
                       <span className="absolute right-6 top-5 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink">
-                        In progress
+                        {experience.status}
                       </span>
                     </div>
 
@@ -132,7 +138,7 @@ export function Experience() {
 
                       <div className="mt-auto border-t border-cream/10 pt-5">
                         <span className="font-display text-[11px] font-black uppercase tracking-[0.22em] text-lime">
-                          KPIs assigned
+                          {experience.kpiLabel}
                         </span>
                         <div className="mt-3 flex flex-wrap gap-2">
                           {experience.kpis.map((kpi) => (
@@ -158,16 +164,16 @@ export function Experience() {
                   >
                     <Quote size={32} className="text-lime" strokeWidth={2.4} />
                     <p className="mt-5 font-display text-xl font-black leading-[1.3] text-cream sm:text-2xl">
-                      {experienceTakeaway}
+                      {experience.takeaway}
                     </p>
                     <span className="mt-6 font-display text-xs font-black uppercase tracking-[0.2em] text-lime">
-                      What the internship taught me
+                      {experience.takeawayLabel}
                     </span>
                     <Link
                       href="#contact"
                       className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-lime px-5 py-3 text-sm font-bold text-ink transition-transform hover:-translate-y-0.5"
                     >
-                      Get in touch
+                      {experience.cta}
                       <ArrowUpRight size={16} strokeWidth={2.6} />
                     </Link>
                   </div>
@@ -193,7 +199,7 @@ export function Experience() {
                       {group.index}
                     </span>
                     <span className="absolute right-6 top-5 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink">
-                      TinHolding
+                      {experience.company}
                     </span>
                   </div>
 

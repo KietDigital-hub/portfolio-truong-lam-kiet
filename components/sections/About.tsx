@@ -4,9 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { GraduationCap, Users, Briefcase, Flag, X } from "lucide-react";
-import { timeline, profile, interests } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { useT } from "@/lib/i18n";
 
 const ICONS = { graduation: GraduationCap, users: Users, briefcase: Briefcase, flag: Flag };
 
@@ -33,6 +33,8 @@ function Connector({ flip }: { flip: boolean }) {
 }
 
 export function About() {
+  const t = useT();
+  const timeline = t.timeline;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const active = openIndex !== null ? timeline[openIndex] : null;
 
@@ -56,12 +58,12 @@ export function About() {
         <Reveal>
           <SectionHeading
             dark
-            eyebrow="Career goals"
+            eyebrow={t.about.eyebrow}
             title={
               <>
-                From learning the basics to a marketer
+                {t.about.titleLines[0]}
                 <br />
-                who builds AI systems, end to end.
+                {t.about.titleLines[1]}
               </>
             }
           />
@@ -95,7 +97,7 @@ export function About() {
                     <h3 className="mt-3 text-xl font-black">{item.title}</h3>
                     <p className="mt-2 text-sm font-medium leading-relaxed text-ink">{item.blurb}</p>
                     <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-ink underline underline-offset-4">
-                      Read more
+                      {t.about.readMore}
                     </span>
                   </button>
                 </div>
@@ -111,9 +113,12 @@ export function About() {
                 <GraduationCap size={22} strokeWidth={2.4} />
               </span>
               <div>
-                <div className="font-black">{profile.school}</div>
+                <div className="font-black">{t.profile.school}</div>
                 <p className="mt-1 text-sm font-medium text-ink">
-                  {profile.major} · {profile.schoolYears}
+                  {t.profile.major} · {t.profile.schoolYears}
+                </p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                  {t.profile.dobLabel}: {t.profile.dob}
                 </p>
               </div>
             </div>
@@ -122,8 +127,10 @@ export function About() {
 
         <Reveal delay={0.1} className="mt-6">
           <div className="flex flex-wrap items-center gap-3 rounded-3xl border border-cream/20 bg-dark-2/70 px-8 py-5 text-sm text-cream/70 backdrop-blur-sm">
-            <span className="font-black uppercase tracking-[0.15em] text-cream">Outside work</span>
-            {interests.map((interest) => (
+            <span className="font-black uppercase tracking-[0.15em] text-cream">
+              {t.about.outsideWork}
+            </span>
+            {t.interests.map((interest) => (
               <span key={interest} className="rounded-full bg-cream/10 px-3 py-1">
                 {interest}
               </span>
@@ -152,7 +159,7 @@ export function About() {
             >
               <button
                 onClick={() => setOpenIndex(null)}
-                aria-label="Close"
+                aria-label={t.about.close}
                 className="absolute right-6 top-6 inline-flex h-9 w-9 items-center justify-center rounded-full bg-cream/10 text-cream hover:bg-cream/20"
               >
                 <X size={16} />

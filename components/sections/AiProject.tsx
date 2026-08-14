@@ -3,13 +3,14 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Play, Sparkles, ExternalLink } from "lucide-react";
-import { aiProject } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
 import { Chip } from "@/components/ui/Chip";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { useT } from "@/lib/i18n";
 
 export function AiProject() {
   const [playing, setPlaying] = useState(false);
+  const aiProject = useT().aiProject;
 
   return (
     <section id="ai-project" className="px-5 py-24 sm:px-8">
@@ -51,7 +52,7 @@ export function AiProject() {
                   <button
                     type="button"
                     onClick={() => setPlaying(true)}
-                    aria-label={`Play video: ${aiProject.title}`}
+                    aria-label={`${aiProject.playLabel}: ${aiProject.title}`}
                     className="group absolute inset-0 h-full w-full cursor-pointer"
                   >
                     <Image
@@ -72,10 +73,10 @@ export function AiProject() {
               <div className="absolute -bottom-4 -left-2 -rotate-2 rounded-2xl bg-ink px-5 py-3 text-cream shadow-lg sm:-left-4">
                 <div className="flex items-center gap-2 text-lime">
                   <Sparkles size={16} strokeWidth={2.6} />
-                  <span className="text-sm font-black leading-none">Made with AI</span>
+                  <span className="text-sm font-black leading-none">{aiProject.madeWithAi}</span>
                 </div>
                 <div className="mt-1 text-[11px] font-semibold text-cream/70">
-                  {aiProject.channel} channel
+                  {aiProject.channel} · {aiProject.channelSuffix}
                 </div>
               </div>
             </div>
@@ -111,7 +112,7 @@ export function AiProject() {
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-bold text-cream transition-colors hover:bg-dark-2"
               >
-                Watch on YouTube
+                {aiProject.watch}
                 <ExternalLink size={16} strokeWidth={2.4} />
               </a>
             </div>

@@ -3,25 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-
-const leftLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "Goals" },
-  { href: "#skills", label: "Skills" },
-];
-
-const rightLinks = [
-  { href: "#experience", label: "Experience" },
-  { href: "#cv", label: "CV" },
-  { href: "#connect", label: "Connect" },
-  { href: "#contact", label: "Contact" },
-];
+import { useT } from "@/lib/i18n";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const t = useT();
+
+  // Trái: 3 mục đầu. Phải: Kinh nghiệm / CV / Kết nối + Liên hệ (bỏ Dự án AI cho đỡ chật).
+  const leftLinks = t.nav.links.slice(0, 3);
+  const rightLinks = [
+    ...t.nav.links.filter((l) => ["#experience", "#cv", "#connect"].includes(l.href)),
+    { href: "#contact", label: t.nav.contact },
+  ];
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header className="absolute inset-x-0 top-11 z-50">
       {/* Desktop: menu chia đôi trái/phải, wordmark hero nằm giữa phía sau */}
       <nav className="mx-auto hidden max-w-7xl items-center justify-between px-8 py-6 md:flex">
         <div className="flex items-center gap-7 text-sm font-bold uppercase tracking-wide">
@@ -52,7 +48,7 @@ export function Navbar() {
           Kiet<span className="text-lime brightness-75">.</span>
         </Link>
         <button
-          aria-label="Open menu"
+          aria-label={t.nav.openMenu}
           className="inline-flex items-center justify-center rounded-full border border-ink/20 bg-oat/70 p-2 backdrop-blur"
           onClick={() => setOpen((v) => !v)}
         >

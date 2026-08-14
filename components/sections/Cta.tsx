@@ -1,9 +1,14 @@
+"use client";
+
 import { Mail, Phone } from "lucide-react";
-import { profile } from "@/lib/profile";
+import { contact } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
+import { useT } from "@/lib/i18n";
 
 export function Cta() {
+  const t = useT();
+
   return (
     <section id="contact" className="px-5 py-24 sm:px-8">
       <div className="mx-auto max-w-6xl">
@@ -17,24 +22,21 @@ export function Cta() {
             </div>
 
             <span className="inline-flex items-center gap-2 rounded-full border border-cream/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cream/70">
-              Ready to start
+              {t.cta.eyebrow}
             </span>
 
-            <h2 className="mx-auto mt-6 max-w-2xl text-4xl font-black leading-[1.05] sm:text-5xl">
-              Want to build something with AI?
+            <h2 className="mx-auto mt-6 max-w-2xl text-4xl font-black leading-[1.1] sm:text-5xl">
+              {t.cta.title}
             </h2>
 
-            <p className="mx-auto mt-5 max-w-xl text-cream/70">
-              I'm looking for a Digital Marketing internship or full-time role where I can put AI
-              to work on real campaigns. I'd love to talk.
-            </p>
+            <p className="mx-auto mt-5 max-w-xl text-cream/70">{t.cta.text}</p>
 
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-              <Button href={`mailto:${profile.email}`} variant="primary">
-                <Mail size={16} /> Send an email
+              <Button href={`mailto:${contact.email}`} variant="primary">
+                <Mail size={16} /> {t.cta.email}
               </Button>
-              <Button href={`tel:${profile.phone}`} variant="outline-on-dark">
-                <Phone size={16} /> {profile.phone}
+              <Button href={`tel:${contact.phone}`} variant="outline-on-dark">
+                <Phone size={16} /> {contact.phone}
               </Button>
             </div>
           </div>

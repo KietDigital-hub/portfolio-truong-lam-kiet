@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Script Node chạy tay (sinh CV, cắt ảnh) - CommonJS, không phải code của site.
+    "scripts/**",
   ]),
 ]);
 

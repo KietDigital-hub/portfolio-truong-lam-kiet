@@ -4,6 +4,8 @@ import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
+import { LanguageProvider } from "@/lib/i18n";
+import { LanguageBar } from "@/components/layout/LanguageBar";
 import "./globals.css";
 // CSS khuyến nghị của Lenis (ép html/body về height:auto, xử lý [data-lenis-prevent]...).
 // Thiếu file này thì `h-full` trên <html> làm Lenis tính sai chiều cao và cuộn bị kẹt.
@@ -33,10 +35,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${bricolage.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-oat text-ink">
-        <AuroraBackground />
-        <ScrollProgress />
-        <CursorGlow />
-        <SmoothScroll>{children}</SmoothScroll>
+        <LanguageProvider>
+          <AuroraBackground />
+          <ScrollProgress />
+          <CursorGlow />
+          <LanguageBar />
+          <SmoothScroll>{children}</SmoothScroll>
+        </LanguageProvider>
       </body>
     </html>
   );

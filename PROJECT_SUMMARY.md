@@ -17,6 +17,8 @@ Phong cách lấy cảm hứng trực tiếp từ **`https://heynesh.com`** (sit
 
 **NGÔN NGỮ SITE: TIẾNG ANH (chốt 14/8/2026)** - toàn bộ nội dung hiển thị trên web + file PPTX đã chuyển sang tiếng Anh (`<html lang="en">`). Mọi nội dung mới cũng viết bằng tiếng Anh. Comment trong code vẫn giữ tiếng Việt (ghi chú nội bộ của Kiệt). Vì không còn render text tiếng Việt, các bug về glyph/dấu ở mục "Bài học" #1, #2, #9 hiện KHÔNG còn ảnh hưởng - nhưng vẫn giữ lại làm tư liệu, nếu sau này có bản tiếng Việt thì đọc lại trước khi đổi font.
 
+**SONG NGỮ VI/EN (chốt 14/8/2026)** - site giờ có thanh chuyển ngữ ở đầu trang, đổi được TOÀN BỘ nội dung giữa tiếng Việt và tiếng Anh. Ghi đè quyết định "site chỉ tiếng Anh" ở đoạn trên: bản tiếng Anh vẫn là mặc định khi render server (SSR), nhưng khách có trình duyệt tiếng Việt sẽ tự thấy bản tiếng Việt ngay lần đầu vào. Xem mục "Kiến trúc song ngữ (i18n)" bên dưới trước khi thêm bất kỳ chữ nào lên site.
+
 **Lưu ý quan trọng — KHÔNG bịa nội dung**: đây là portfolio xin việc của sinh viên, không phải trang bán dịch vụ freelancer. Toàn bộ số liệu/dự án/kỹ năng lấy từ CV thật (xem mục "Nội dung cá nhân"). KHÔNG bịa thêm số năm kinh nghiệm, số khách hàng, bảng giá dịch vụ, hay testimonial giả. Ảnh minh họa trong project card (xem Tech Stack) là ảnh Unsplash theo chủ đề, KHÔNG phải screenshot dự án thật — nếu sau này có ảnh thật thì thay thế ngay.
 
 ## Trạng thái triển khai (deployed)
@@ -25,6 +27,63 @@ Phong cách lấy cảm hứng trực tiếp từ **`https://heynesh.com`** (sit
 - **GitHub repo**: https://github.com/KietDigital-hub/portfolio-truong-lam-kiet (nhánh `main`)
 - Vercel đã kết nối với repo GitHub này → mỗi lần `git push` lên `main`, Vercel tự build & deploy lại (~1 phút), không cần thao tác gì trên vercel.com.
 - Git identity: repo KHÔNG có `user.name`/`user.email` cấu hình global trên máy này. Khi commit, dùng `git -c user.name="Trương Lâm Kiệt" -c user.email="kiettruong086@gmail.com" commit -m "..."` (override tại chỗ, không đụng git config global — theo đúng nguyên tắc không tự ý sửa git config).
+
+## Kiến trúc song ngữ (i18n) - ĐỌC TRƯỚC KHI THÊM CHỮ LÊN SITE
+
+**Không hardcode chữ hiển thị trong component nữa.** Mọi chuỗi người dùng đọc được
+đều nằm trong từ điển:
+
+```
+lib/content/en.ts   # bản GỐC, định nghĩa luôn kiểu `SiteContent` (export type SiteContent = typeof en)
+lib/content/vi.ts   # bản tiếng Việt, khai báo `: SiteContent` -> thiếu key là TypeScript báo lỗi ngay
+lib/i18n.tsx        # LanguageProvider + hook useT() / useLanguage()
+lib/profile.ts      # CHỈ còn dữ liệu không phụ thuộc ngôn ngữ: contact (email/phone/link) + tools
+```
+
+Quy trình thêm nội dung mới: thêm key vào `en.ts` → TypeScript lập tức bắt lỗi ở
+`vi.ts` → dịch → dùng trong component qua `const t = useT()`.
+
+- **Provider**: `LanguageProvider` bọc trong `app/layout.tsx`. Component nào cần chữ
+  thì phải là client component (`"use client"`) và gọi `useT()`.
+- **Chọn ngôn ngữ**: lưu ở `localStorage["kiet-portfolio-lang"]`. Lần đầu vào mà chưa
+  có lựa chọn thì đoán theo `navigator.language` (bắt đầu bằng `vi` → tiếng Việt).
+- **`DEFAULT_LANG = "en"`** và phải giữ là hằng số: đây là ngôn ngữ render phía server,
+  đổi thành giá trị động sẽ gây hydration mismatch.
+- **Không dùng `useState` + `useEffect` để đọc localStorage** - đã bị eslint
+  (`react-hooks/set-state-in-effect`) chặn. Đang dùng `useSyncExternalStore` với một
+  store nhỏ ngoài React trong `lib/i18n.tsx`, giữ nguyên cách này.
+- **`document.title` phải ghi trong `requestAnimationFrame`**, không ghi thẳng trong
+  effect: Next tự áp lại metadata tĩnh ở lần render kế tiếp và sẽ đè mất.
+- **Thanh chuyển ngữ** `components/layout/LanguageBar.tsx` là phần tử `sticky top-0`
+  nằm TRONG luồng, cao 44px. Vì vậy `Navbar` phải dùng `top-11` và `Sidebar` dùng
+  `top-16` - sửa chiều cao thanh này thì phải sửa cả hai chỗ đó.
+- **Anchor scroll-spy** (`SECTION_HREFS` trong `Sidebar.tsx`) để riêng ngoài từ điển vì
+  href không đổi theo ngôn ngữ.
+
+## CV: 2 bản VI + EN, sinh bằng script
+
+CV không còn là file PDF thiết kế tay nữa mà được **sinh lại từ code** để giữ đồng bộ
+2 ngôn ngữ:
+
+```
+scripts/cv/cv-data.js      # nội dung 2 bản (vi + en), gồm cả NGÀY SINH 16/03/2005
+scripts/cv/cv-template.js  # template HTML A4 1 trang (cột trái đen, cột phải trắng, gạch chân vàng)
+scripts/cv/build-cv.js     # render bằng Playwright -> PDF + PNG xem trước
+scripts/extract-cv-photo.js # cắt ảnh thẻ ra từ bản render CV cũ (chạy 1 lần, đã có kết quả)
+```
+
+```bash
+node scripts/cv/build-cv.js   # ghi ra public/cv/CV-...-VI.pdf, -EN.pdf và cv-vi/en-page-1.png
+```
+
+- Sửa nội dung CV thì sửa `cv-data.js` rồi chạy lại script, **đừng sửa tay file PDF**.
+- Cần mạng để tải font `Be Vietnam Pro` từ Google Fonts (font này đã test đủ glyph
+  tiếng Việt - xem "Bài học" #1).
+- CV phải vừa **đúng 1 trang A4**. Thêm nội dung thì phải giảm `font-size`/`margin`
+  trong `cv-template.js` rồi kiểm tra lại ảnh PNG, nếu không sẽ tràn sang trang 2.
+- Section `#cv` trên web có 2 tab (Tiếng Việt / English), mặc định theo ngôn ngữ site
+  nhưng đổi riêng được. File cũ `CV-Truong-Lam-Kiet.pdf` + `cv-page-1.png` vẫn giữ lại
+  (có thể đã share link ra ngoài) nhưng KHÔNG còn được site dùng.
 
 ## Tech Stack (thực tế đang dùng)
 

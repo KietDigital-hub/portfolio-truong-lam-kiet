@@ -1,10 +1,14 @@
-﻿import Image from "next/image";
+﻿"use client";
+
+import Image from "next/image";
 import { Music2 } from "lucide-react";
-import { achievement } from "@/lib/profile";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { useT } from "@/lib/i18n";
 
 export function Achievements() {
+  const achievement = useT().achievement;
+
   return (
     <section id="achievements" className="px-5 py-24 sm:px-8">
       <div className="mx-auto max-w-6xl">
@@ -21,7 +25,7 @@ export function Achievements() {
           </div>
 
         <Reveal>
-          <SectionHeading eyebrow="Achievement" title="Self-taught, self-shipped, self-measured." />
+          <SectionHeading eyebrow={achievement.eyebrow} title={achievement.heading} />
         </Reveal>
 
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -65,8 +69,10 @@ export function Achievements() {
                 />
               </div>
               <div className="absolute -bottom-4 -left-4 -rotate-3 rounded-2xl bg-ink px-5 py-3 text-cream shadow-lg">
-                <div className="text-xl font-black leading-none text-lime">AI</div>
-                <div className="mt-1 text-[11px] font-semibold">powered pipeline</div>
+                <div className="text-xl font-black leading-none text-lime">
+                  {achievement.badgeTop}
+                </div>
+                <div className="mt-1 text-[11px] font-semibold">{achievement.badgeBottom}</div>
               </div>
             </div>
           </Reveal>
