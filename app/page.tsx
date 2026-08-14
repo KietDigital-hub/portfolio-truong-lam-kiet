@@ -10,7 +10,8 @@ import { Experience } from "@/components/sections/Experience";
 import { AiProject } from "@/components/sections/AiProject";
 import { Achievements } from "@/components/sections/Achievements";
 import { Cta } from "@/components/sections/Cta";
-import { Faq } from "@/components/sections/Faq";
+import { Cv } from "@/components/sections/Cv";
+import { Connect } from "@/components/sections/Connect";
 
 export default function Home() {
   return (
@@ -29,8 +30,10 @@ export default function Home() {
         <div className="lg:pl-80">
           <AiProject />
           <Achievements />
+          <Cv />
           <Cta />
-          <Faq />
+          {/* Kết nối để cuối cùng: cuộn hết trang là thấy ngay dàn logo */}
+          <Connect />
         </div>
       </main>
       <Footer />

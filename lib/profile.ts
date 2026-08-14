@@ -273,29 +273,6 @@ export const achievement = {
   ],
 };
 
-export const faqs = [
-  {
-    q: "Bạn đã có kinh nghiệm thực tế chưa?",
-    a: "Mình đang thực tập vị trí SEO tại TinHolding: thiết kế lại giao diện website WordPress, research từ khóa và lên outline, viết - đăng - tối ưu bài chuẩn SEO, đi backlink offpage theo KPI hàng tuần. Song song đó là 2 dự án học phần mình đảm nhận vai trò Leader.",
-  },
-  {
-    q: "Bạn mạnh nhất ở mảng nào?",
-    a: "Digital Advertising cơ bản trên Facebook/Google/TikTok Ads, viết content chuẩn SEO, và quản trị website WordPress.",
-  },
-  {
-    q: "Bạn có thể bắt đầu công việc khi nào?",
-    a: "Sau khi kết thúc kỳ thực tập hiện tại (22/8/2026), hoặc sớm hơn nếu là vị trí part-time/song song.",
-  },
-  {
-    q: "Bạn dùng công cụ AI trong công việc như thế nào?",
-    a: "Dùng ChatGPT, Claude, Midjourney để hỗ trợ lên ý tưởng, viết & tối ưu content, và tăng tốc quy trình sản xuất nội dung.",
-  },
-  {
-    q: "Điểm mạnh mềm của bạn là gì?",
-    a: "Giao tiếp và lắng nghe tích cực để tiếp nhận phản hồi từ đồng đội/khách hàng, cùng khả năng làm Leader điều phối một nhóm hoàn thành dự án đúng hạn.",
-  },
-] as const;
-
 export const interests = [
   "Đọc sách về Phát triển bản thân",
   "Đi bộ 15-30 phút/ngày",
@@ -308,5 +285,6 @@ export const navLinks = [
   { href: "#skills", label: "Kỹ năng" },
   { href: "#experience", label: "Kinh nghiệm" },
   { href: "#ai-project", label: "Dự án AI" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#cv", label: "CV" },
+  { href: "#connect", label: "Kết nối" },
 ];
